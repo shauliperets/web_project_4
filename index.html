@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./pages/index.css" />
+    <script src="./js/index.js"></script>
     <title>Document</title>
   </head>
   <body class="page">
@@ -20,7 +21,10 @@
         />
         <div class="profile__title-panel">
           <h1 class="profile__title">Jacques Cousteau</h1>
-          <button class="profile__edit-button">
+          <button
+            class="profile__edit-button"
+            onclick="handleEditButtonClick()"
+          >
             <svg
               width="10"
               height="10"
@@ -190,6 +194,21 @@
               />
             </svg>
           </div>
+        </div>
+      </section>
+      <section class="popup">
+        <button
+          class="popup__close-button"
+          onclick="handleCloseButtonClick()"
+        ></button>
+
+        <div class="popup__container">
+          <h2 class="popup__title">Edit profile</h2>
+          <input type="text" class="popup__input" placeholder="Name" />
+          <input type="text" class="popup__input" placeholder="About me" />
+          <button class="popup__save-button" onclick="handleSaveButtonClick()">
+            Save
+          </button>
         </div>
       </section>
     </main>
