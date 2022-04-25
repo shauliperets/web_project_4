@@ -8,3 +8,15 @@
 .header__image {
   max-width: 173px;
 }
+
+@media screen and (max-width: 940px) {
+  .header {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .header {
+    width: 320px;
+  }
+}

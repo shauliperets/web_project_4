@@ -6,3 +6,15 @@
   color: #545454;
   padding: 67px 0 60px 0;
 }
+
+@media screen and (max-width: 940px) {
+  .footer {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .footer {
+    width: 282px;
+  }
+}

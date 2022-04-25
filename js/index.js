@@ -1,6 +1,6 @@
 let closeButton = document.querySelector(".popup__close-button");
 
-let editButton = document.querySelector(".popup__edit-button");
+let editButton = document.querySelector(".profile__edit-button");
 
 let saveButton = document.querySelector(".popup__save-button");
 
@@ -47,5 +47,5 @@ function handleSaveButtonClick() {
 }
 
 closeButton.addEventListener("click", handleCloseButtonClick);
-editButton.addEventListener("click", handleCloseButtonClick);
-saveButton, addEventListener("click", handleSaveButtonClick);
+editButton.addEventListener("click", handleEditButtonClick);
+saveButton.addEventListener("click", handleSaveButtonClick);

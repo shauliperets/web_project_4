@@ -38,10 +38,6 @@
   background-color: white;
 }
 
-.popup_opened {
-  display: block;
-}
-
 .popup__title {
   margin: 0 auto;
   padding: 35px 0 53px 0;
