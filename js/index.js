@@ -19,6 +19,8 @@ function handleEditButtonClick() {
 
   inputs[0].value = title.textContent;
   inputs[1].value = subtitle.textContent;
+
+  console.log("edit clicked close");
 }
 
 function handleCloseButtonClick() {
