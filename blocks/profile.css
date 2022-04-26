@@ -1,8 +1,8 @@
 .profile {
   display: grid;
-  grid-template-columns: 120px 445px 24px 300px;
+  grid-template-columns: 120px 445px 24px 391px;
   grid-template-rows: 50px auto;
-  gap: 16px 0;
+  gap: 16px 31px;
   max-width: 880px;
   margin: 0 auto;
   padding: 40px 0 0 0;
@@ -28,23 +28,28 @@
 }
 
 .profile__title {
-  width: 373px;
+  /*width: 373px;*/
   font-size: 42px;
   line-height: 48px;
   margin: 0;
-  padding: 0 0 0 31px;
+  padding: 0;
 }
 
 .profile__edit-button {
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 3;
   width: 24px;
   height: 24px;
   margin-left: 18px;
   background-color: #000000;
-  border: 1px solid #ffffff;
+  border: 0;
+  cursor: pointer;
+}
+
+.profile__edit-button:hover {
+  opacity: 0.8;
+}
+
+.profile__edit-image {
+  width: 24px;
 }
 
 .profile__subtitle {
@@ -54,7 +59,7 @@
   grid-row-end: 3;
   font-size: 18px;
   line-height: 22px;
-  padding: 0 0 0 31px;
+  padding: 0;
   margin: 0;
 }
 
@@ -65,26 +70,31 @@
   grid-row-end: 3;
   width: 150px;
   height: 50px;
-  margin-left: 164px;
+  /*margin-left: 164px;*/
+  margin-left: 47px;
   background-color: #000000;
   border: 1px solid #ffffff;
+  cursor: pointer;
+}
+
+.profile__add-button:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 940px) {
   .profile {
-    grid-template-columns: 120px 445px 24px;
+    grid-template-columns: 120px 445px;
     grid-template-rows: auto auto auto auto;
     max-width: 600px;
   }
 
   .profile__add-button {
-    grid-column-start: 1;
+    grid-column-start: 2;
     grid-column-end: 4;
     grid-row-start: 3;
     grid-row-end: 4;
     margin-left: 0;
-    margin: 0 auto;
-    width: 350px;
+    width: 371px;
   }
 
   .profile__subtitle {
@@ -100,6 +110,7 @@
     grid-template-columns: 282px;
     grid-template-rows: auto auto auto auto;
     max-width: 282px;
+    justify-items: center;
   }
 
   .profile__image {
@@ -116,11 +127,16 @@
     grid-row-end: 3;
   }
 
-  .profile__title-panel {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 3;
+  .profile__title {
+    width: 224px;
+
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .profile__edit-image {
+    width: 18px;
   }
 
   .profile__subtitle {

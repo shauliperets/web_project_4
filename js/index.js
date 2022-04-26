@@ -48,6 +48,14 @@ function handleSaveButtonClick() {
   popup.classList.toggle("popup__display");
 }
 
+function handleIconClick(id) {
+  if (document.getElementById(id).src.includes("/heart.svg")) {
+    document.getElementById(id).src = "./images/heart-black.svg";
+  } else {
+    document.getElementById(id).src = "./images/heart.svg";
+  }
+}
+
 closeButton.addEventListener("click", handleCloseButtonClick);
 editButton.addEventListener("click", handleEditButtonClick);
 saveButton.addEventListener("click", handleSaveButtonClick);

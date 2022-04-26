@@ -71,6 +71,11 @@
   line-height: 22px;
   text-align: center;
   color: #ffffff;
+  cursor: pointer;
+}
+
+.popup__save-button:hover {
+  opacity: 0.8;
 }
 
 .popup__icon {
@@ -95,4 +100,9 @@
   width: 40px;
   height: 40px;
   border: 0;
+  cursor: pointer;
+}
+
+.popup__close-button:hover {
+  opacity: 0.8;
 }

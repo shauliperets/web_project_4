@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./pages/index.css" />
-    <script src="./js/index.js"></script>
+
     <title>Around The U.S</title>
   </head>
   <body class="page">
@@ -21,22 +21,12 @@
         />
         <div class="profile__title-panel">
           <h1 class="profile__title">Jacques Cousteau</h1>
-          <button
-            class="profile__edit-button"
-            onclick="handleEditButtonClick()"
-          >
-            <svg
-              width="10"
-              height="10"
-              viewBox="0 0 10 10"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10 1.32827L2.60377 8.7666L1.28302 7.41936L8.66038 0L10 1.32827ZM0 10L1.96226 9.41177L0.584906 8.08349L0 10Z"
-                fill="white"
-              />
-            </svg>
+          <button class="profile__edit-button">
+            <img
+              class="profile__edit-image"
+              src="./images/edit-button.png"
+              alt="Edit button"
+            />
           </button>
         </div>
         <p class="profile__subtitle">Explorer</p>
@@ -64,19 +54,13 @@
           />
           <div class="card__title-panel">
             <h1 class="card__title">Yosemite Valley</h1>
-            <svg
-              width="21"
-              height="19"
-              viewBox="0 0 21 19"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18.8368 2.20277L18.8394 2.20544C20.7188 4.13299 20.7225 7.31163 18.8368 9.26495L10.4812 17.9202L2.14988 9.29C1.25494 8.34225 0.75 7.08483 0.75 5.74496C0.75 4.39717 1.23873 3.14375 2.14714 2.20276L2.14715 2.20277L2.14972 2.20008C3.99577 0.268703 7.0174 0.264567 8.88883 2.22231L8.88883 2.22231L8.89139 2.22497L9.94166 3.3129L10.4867 3.87752L11.0261 3.30743L12.0736 2.20014C13.9438 0.265745 16.9677 0.266621 18.8368 2.20277Z"
-                stroke="black"
-                stroke-width="1.5"
-              />
-            </svg>
+            <img
+              id="heart-1"
+              class="card__icon"
+              src="./images/heart.svg"
+              alt="Heart icon"
+              onclick="handleIconClick('heart-1')"
+            />
           </div>
         </div>
 
@@ -88,19 +72,13 @@
           />
           <div class="card__title-panel">
             <h1 class="card__title">Lake Louise</h1>
-            <svg
-              width="21"
-              height="19"
-              viewBox="0 0 21 19"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18.8368 2.20277L18.8394 2.20544C20.7188 4.13299 20.7225 7.31163 18.8368 9.26495L10.4812 17.9202L2.14988 9.29C1.25494 8.34225 0.75 7.08483 0.75 5.74496C0.75 4.39717 1.23873 3.14375 2.14714 2.20276L2.14715 2.20277L2.14972 2.20008C3.99577 0.268703 7.0174 0.264567 8.88883 2.22231L8.88883 2.22231L8.89139 2.22497L9.94166 3.3129L10.4867 3.87752L11.0261 3.30743L12.0736 2.20014C13.9438 0.265745 16.9677 0.266621 18.8368 2.20277Z"
-                stroke="black"
-                stroke-width="1.5"
-              />
-            </svg>
+            <img
+              id="heart-2"
+              class="card__icon"
+              src="./images/heart.svg"
+              alt="Heart icon"
+              onclick="handleIconClick('heart-2')"
+            />
           </div>
         </div>
 
@@ -112,19 +90,13 @@
           />
           <div class="card__title-panel">
             <h1 class="card__title">Bald Mountains</h1>
-            <svg
-              width="21"
-              height="19"
-              viewBox="0 0 21 19"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18.8368 2.20277L18.8394 2.20544C20.7188 4.13299 20.7225 7.31163 18.8368 9.26495L10.4812 17.9202L2.14988 9.29C1.25494 8.34225 0.75 7.08483 0.75 5.74496C0.75 4.39717 1.23873 3.14375 2.14714 2.20276L2.14715 2.20277L2.14972 2.20008C3.99577 0.268703 7.0174 0.264567 8.88883 2.22231L8.88883 2.22231L8.89139 2.22497L9.94166 3.3129L10.4867 3.87752L11.0261 3.30743L12.0736 2.20014C13.9438 0.265745 16.9677 0.266621 18.8368 2.20277Z"
-                stroke="black"
-                stroke-width="1.5"
-              />
-            </svg>
+            <img
+              id="heart-3"
+              class="card__icon"
+              src="./images/heart.svg"
+              alt="Heart icon"
+              onclick="handleIconClick('heart-3')"
+            />
           </div>
         </div>
 
@@ -132,19 +104,13 @@
           <img src="./images/latemar.png" alt="Latemar" class="card__image" />
           <div class="card__title-panel">
             <h1 class="card__title">Latemar</h1>
-            <svg
-              width="21"
-              height="19"
-              viewBox="0 0 21 19"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18.8368 2.20277L18.8394 2.20544C20.7188 4.13299 20.7225 7.31163 18.8368 9.26495L10.4812 17.9202L2.14988 9.29C1.25494 8.34225 0.75 7.08483 0.75 5.74496C0.75 4.39717 1.23873 3.14375 2.14714 2.20276L2.14715 2.20277L2.14972 2.20008C3.99577 0.268703 7.0174 0.264567 8.88883 2.22231L8.88883 2.22231L8.89139 2.22497L9.94166 3.3129L10.4867 3.87752L11.0261 3.30743L12.0736 2.20014C13.9438 0.265745 16.9677 0.266621 18.8368 2.20277Z"
-                stroke="black"
-                stroke-width="1.5"
-              />
-            </svg>
+            <img
+              id="heart-4"
+              class="card__icon"
+              src="./images/heart.svg"
+              alt="Heart icon"
+              onclick="handleIconClick('heart-4')"
+            />
           </div>
         </div>
 
@@ -156,19 +122,13 @@
           />
           <div class="card__title-panel">
             <h1 class="card__title">Vanoise National Park</h1>
-            <svg
-              width="21"
-              height="19"
-              viewBox="0 0 21 19"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18.8368 2.20277L18.8394 2.20544C20.7188 4.13299 20.7225 7.31163 18.8368 9.26495L10.4812 17.9202L2.14988 9.29C1.25494 8.34225 0.75 7.08483 0.75 5.74496C0.75 4.39717 1.23873 3.14375 2.14714 2.20276L2.14715 2.20277L2.14972 2.20008C3.99577 0.268703 7.0174 0.264567 8.88883 2.22231L8.88883 2.22231L8.89139 2.22497L9.94166 3.3129L10.4867 3.87752L11.0261 3.30743L12.0736 2.20014C13.9438 0.265745 16.9677 0.266621 18.8368 2.20277Z"
-                stroke="black"
-                stroke-width="1.5"
-              />
-            </svg>
+            <img
+              id="heart-5"
+              class="card__icon"
+              src="./images/heart.svg"
+              alt="Heart icon"
+              onclick="handleIconClick('heart-5')"
+            />
           </div>
         </div>
 
@@ -180,37 +140,27 @@
           />
           <div class="card__title-panel">
             <h1 class="card__title">Lago di Braies</h1>
-            <svg
-              width="21"
-              height="19"
-              viewBox="0 0 21 19"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18.8368 2.20277L18.8394 2.20544C20.7188 4.13299 20.7225 7.31163 18.8368 9.26495L10.4812 17.9202L2.14988 9.29C1.25494 8.34225 0.75 7.08483 0.75 5.74496C0.75 4.39717 1.23873 3.14375 2.14714 2.20276L2.14715 2.20277L2.14972 2.20008C3.99577 0.268703 7.0174 0.264567 8.88883 2.22231L8.88883 2.22231L8.89139 2.22497L9.94166 3.3129L10.4867 3.87752L11.0261 3.30743L12.0736 2.20014C13.9438 0.265745 16.9677 0.266621 18.8368 2.20277Z"
-                stroke="black"
-                stroke-width="1.5"
-              />
-            </svg>
+            <img
+              id="heart-6"
+              class="card__icon"
+              src="./images/heart.svg"
+              alt="Heart icon"
+              onclick="handleIconClick('heart-6')"
+            />
           </div>
         </div>
       </section>
       <section class="popup">
-        <button
-          class="popup__close-button"
-          onclick="handleCloseButtonClick()"
-        ></button>
+        <button class="popup__close-button"></button>
         <div class="popup__container">
           <h2 class="popup__title">Edit profile</h2>
           <input type="text" class="popup__input" placeholder="Name" />
           <input type="text" class="popup__input" placeholder="About me" />
-          <button class="popup__save-button" onclick="handleSaveButtonClick()">
-            Save
-          </button>
+          <button class="popup__save-button">Save</button>
         </div>
       </section>
     </main>
     <footer class="footer">© 2021 Around The U.S.</footer>
+    <script src="./js/index.js"></script>
   </body>
 </html>
