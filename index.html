@@ -9,158 +9,168 @@
     <title>Around The U.S</title>
   </head>
   <body class="page">
-    <header class="header">
-      <img src="./images/header.png" alt="Header image" class="header__image" />
-    </header>
-    <main>
-      <section class="profile">
+    <form>
+      <header class="header">
         <img
-          src="./images/image.jpg"
-          alt="Profile image"
-          class="profile__image"
+          src="./images/header.png"
+          alt="Header image"
+          class="header__image"
         />
-        <div class="profile__title-panel">
-          <h1 class="profile__title">Jacques Cousteau</h1>
-          <button class="profile__edit-button">
-            <img
-              class="profile__edit-image"
-              src="./images/edit-button.png"
-              alt="Edit button"
-            />
+      </header>
+      <main>
+        <section class="profile">
+          <img
+            src="./images/image.jpg"
+            alt="Profile image"
+            class="profile__image"
+          />
+          <div class="profile__title-panel">
+            <h1 class="profile__title">Jacques Cousteau</h1>
+            <button class="profile__edit-button">
+              <img
+                class="profile__edit-image"
+                src="./images/edit-button.png"
+                alt="Edit button"
+              />
+            </button>
+          </div>
+          <p class="profile__subtitle">Explorer</p>
+          <button class="profile__add-button">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M22 9.77778H12.2222V0H9.77778V9.77778H0V12.2222H9.77778V22H12.2222V12.2222H22V9.77778Z"
+                fill="white"
+              />
+            </svg>
           </button>
-        </div>
-        <p class="profile__subtitle">Explorer</p>
-        <button class="profile__add-button">
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 22 22"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M22 9.77778H12.2222V0H9.77778V9.77778H0V12.2222H9.77778V22H12.2222V12.2222H22V9.77778Z"
-              fill="white"
-            />
-          </svg>
-        </button>
-      </section>
-      <section class="elements">
-        <div class="card">
-          <img
-            src="./images/yosemite-valley.jpg"
-            alt="Yosemite Valley"
-            class="card__image"
-          />
-          <div class="card__title-panel">
-            <h1 class="card__title">Yosemite Valley</h1>
+        </section>
+        <section class="elements">
+          <div class="card">
             <img
-              id="heart-1"
-              class="card__icon"
-              src="./images/heart.svg"
-              alt="Heart icon"
-              onclick="handleIconClick('heart-1')"
+              src="./images/yosemite-valley.jpg"
+              alt="Yosemite Valley"
+              class="card__image"
             />
+            <div class="card__title-panel">
+              <h1 class="card__title">Yosemite Valley</h1>
+              <img
+                id="heart-1"
+                class="card__icon"
+                src="./images/heart.svg"
+                alt="Heart icon"
+              />
+            </div>
           </div>
-        </div>
 
-        <div class="card">
-          <img
-            src="./images/lake-louise.png"
-            alt="Lake Louise"
-            class="card__image"
-          />
-          <div class="card__title-panel">
-            <h1 class="card__title">Lake Louise</h1>
+          <div class="card">
             <img
-              id="heart-2"
-              class="card__icon"
-              src="./images/heart.svg"
-              alt="Heart icon"
-              onclick="handleIconClick('heart-2')"
+              src="./images/lake-louise.png"
+              alt="Lake Louise"
+              class="card__image"
             />
+            <div class="card__title-panel">
+              <h1 class="card__title">Lake Louise</h1>
+              <img
+                id="heart-2"
+                class="card__icon"
+                src="./images/heart.svg"
+                alt="Heart icon"
+              />
+            </div>
           </div>
-        </div>
 
-        <div class="card">
-          <img
-            src="./images/bald-mountains.png"
-            alt="Bald Mountains"
-            class="card__image"
-          />
-          <div class="card__title-panel">
-            <h1 class="card__title">Bald Mountains</h1>
+          <div class="card">
             <img
-              id="heart-3"
-              class="card__icon"
-              src="./images/heart.svg"
-              alt="Heart icon"
-              onclick="handleIconClick('heart-3')"
+              src="./images/bald-mountains.png"
+              alt="Bald Mountains"
+              class="card__image"
             />
+            <div class="card__title-panel">
+              <h1 class="card__title">Bald Mountains</h1>
+              <img
+                id="heart-3"
+                class="card__icon"
+                src="./images/heart.svg"
+                alt="Heart icon"
+              />
+            </div>
           </div>
-        </div>
 
-        <div class="card">
-          <img src="./images/latemar.png" alt="Latemar" class="card__image" />
-          <div class="card__title-panel">
-            <h1 class="card__title">Latemar</h1>
-            <img
-              id="heart-4"
-              class="card__icon"
-              src="./images/heart.svg"
-              alt="Heart icon"
-              onclick="handleIconClick('heart-4')"
-            />
+          <div class="card">
+            <img src="./images/latemar.png" alt="Latemar" class="card__image" />
+            <div class="card__title-panel">
+              <h1 class="card__title">Latemar</h1>
+              <img
+                id="heart-4"
+                class="card__icon"
+                src="./images/heart.svg"
+                alt="Heart icon"
+              />
+            </div>
           </div>
-        </div>
 
-        <div class="card">
-          <img
-            src="./images/vanoise-national.png"
-            alt="Vanoise National"
-            class="card__image"
-          />
-          <div class="card__title-panel">
-            <h1 class="card__title">Vanoise National Park</h1>
+          <div class="card">
             <img
-              id="heart-5"
-              class="card__icon"
-              src="./images/heart.svg"
-              alt="Heart icon"
-              onclick="handleIconClick('heart-5')"
+              src="./images/vanoise-national.png"
+              alt="Vanoise National"
+              class="card__image"
             />
+            <div class="card__title-panel">
+              <h1 class="card__title">Vanoise National Park</h1>
+              <img
+                id="heart-5"
+                class="card__icon"
+                src="./images/heart.svg"
+                alt="Heart icon"
+              />
+            </div>
           </div>
-        </div>
 
-        <div class="card">
-          <img
-            src="./images/lago-di-braies.png"
-            alt="Lago di Braies"
-            class="card__image"
-          />
-          <div class="card__title-panel">
-            <h1 class="card__title">Lago di Braies</h1>
+          <div class="card">
             <img
-              id="heart-6"
-              class="card__icon"
-              src="./images/heart.svg"
-              alt="Heart icon"
-              onclick="handleIconClick('heart-6')"
+              src="./images/lago-di-braies.png"
+              alt="Lago di Braies"
+              class="card__image"
             />
+            <div class="card__title-panel">
+              <h1 class="card__title">Lago di Braies</h1>
+              <img
+                id="heart-6"
+                class="card__icon"
+                src="./images/heart.svg"
+                alt="Heart icon"
+              />
+            </div>
           </div>
-        </div>
-      </section>
-      <section class="popup">
-        <button class="popup__close-button"></button>
-        <div class="popup__container">
-          <h2 class="popup__title">Edit profile</h2>
-          <input type="text" class="popup__input" placeholder="Name" />
-          <input type="text" class="popup__input" placeholder="About me" />
-          <button class="popup__save-button">Save</button>
-        </div>
-      </section>
-    </main>
-    <footer class="footer">© 2021 Around The U.S.</footer>
+        </section>
+        <section class="popup">
+          <div class="popup__container">
+            <button class="popup__close-button"></button>
+            <h2 class="popup__title">Edit profile</h2>
+            <input
+              id="popup-name"
+              type="text"
+              class="popup__input"
+              placeholder="Name"
+            />
+            <input
+              id="popup-about-me"
+              type="text"
+              class="popup__input"
+              placeholder="About me"
+            />
+            <button type="submit" class="popup__save-button">Save</button>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">© 2021 Around The U.S.</footer>
+    </form>
     <script src="./js/index.js"></script>
   </body>
 </html>

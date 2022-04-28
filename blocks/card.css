@@ -1,7 +1,6 @@
 .card {
   background-color: #ffffff;
   width: 282px;
-  height: 361px;
   border-radius: 10px 10px 10px 10px;
 }
 
@@ -34,4 +33,5 @@
 
 .card__icon:hover {
   opacity: 0.5;
+  cursor: pointer;
 }
