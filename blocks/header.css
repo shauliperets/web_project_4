@@ -6,7 +6,7 @@
 }
 
 .header__image {
-  max-width: 173px;
+  width: 173px;
 }
 
 @media screen and (max-width: 940px) {

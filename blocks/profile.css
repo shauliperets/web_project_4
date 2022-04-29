@@ -1,20 +1,26 @@
 .profile {
   display: grid;
   grid-template-columns: 120px 445px 24px 391px;
-  grid-template-rows: 50px auto;
-  gap: 16px 31px;
+  grid-template-rows: auto;
+  gap: 31px;
   max-width: 880px;
   margin: 0 auto;
   padding: 40px 0 0 0;
+  align-items: center;
 }
 
 .profile__image {
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 3;
+  /*grid-row-start: 1;
+  grid-row-end: 3;*/
   width: 120px;
   border-radius: 60px;
+}
+
+.profile__content {
+  display: flex;
+  flex-direction: column;
 }
 
 .profile__title-panel {
@@ -23,17 +29,16 @@
   align-items: center;
   grid-column-start: 2;
   grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 2;
+  /*grid-row-start: 1;
+  grid-row-end: 2;*/
 }
 
 .profile__title {
   font-weight: 500;
   font-size: 42px;
   line-height: 48px;
-  margin: 0;
+  margin: 0 0 0 0;
   padding: 0;
-
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -57,28 +62,31 @@
 }
 
 .profile__subtitle {
-  grid-column-start: 2;
+  /*grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 2;
-  grid-row-end: 3;
+  grid-row-end: 3;*/
   font-size: 18px;
   line-height: 22px;
   padding: 0;
-  margin: 0;
+  margin: 16px 0 0 0;
 }
 
 .profile__add-button {
   grid-column-start: 4;
   grid-column-end: 5;
-  grid-row-start: 1;
-  grid-row-end: 3;
+  /*grid-row-start: 1;
+  grid-row-end: 3;*/
   width: 150px;
   height: 50px;
-  margin-left: 47px;
+  margin-left: 37px;
   background-color: transparent;
-  border: 2px solid #ffffff;
-  border-radius: 2px;
+  /*border: 2px solid #ffffff;*/
+  border: 0;
   cursor: pointer;
+  background-image: url("../images/add-button.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .profile__add-button:hover {
@@ -89,6 +97,7 @@
   .profile {
     grid-template-columns: 120px 445px;
     grid-template-rows: repeat(4, auto);
+    gap: 10px 20px;
     max-width: 600px;
   }
 
@@ -96,9 +105,10 @@
     grid-column-start: 2;
     grid-column-end: 4;
     grid-row-start: 3;
-    grid-row-end: 4;
+    grid-row-end: 5;
     margin-left: 0;
-    width: 371px;
+    width: 290px;
+    background-image: url("../images/add-button320.svg");
   }
 }
 

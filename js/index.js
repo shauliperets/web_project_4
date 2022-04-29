@@ -2,7 +2,7 @@ let closeButton = document.querySelector(".popup__close-button");
 
 let editButton = document.querySelector(".profile__edit-button");
 
-let saveButton = document.querySelector(".popup__save-button");
+/*let saveButton = document.querySelector(".popup__save-button");*/
 
 let popup = document.querySelector(".popup");
 
@@ -12,20 +12,27 @@ let subtitle = document.querySelector(".profile__subtitle");
 
 let inputs = document.querySelectorAll(".popup__input");
 
-function handleEditButtonClick() {
+let form = document.querySelector(".popup__form");
+
+function handleEditButtonClick(event) {
+  event.preventDefault();
+
   popup.classList.toggle("popup_display");
 
   document.getElementById("popup-name").value = title.textContent;
   document.getElementById("popup-about-me").value = subtitle.textContent;
 }
 
-function handleCloseButtonClick() {
+function handleCloseButtonClick(event) {
+  event.preventDefault();
   popup.classList.toggle("popup_display");
 }
 
-function handleSaveButtonClick() {
-  title.textContent = inputs[0].value;
-  subtitle.textContent = inputs[1].value;
+function handleSaveButtonClick(event) {
+  event.preventDefault();
+
+  title.textContent = document.getElementById("popup-name").value;
+  subtitle.textContent = document.getElementById("popup-about-me").value;
 
   popup.classList.toggle("popup_display");
 }
@@ -42,4 +49,4 @@ function handleIconClick(id) {
 
 closeButton.addEventListener("click", handleCloseButtonClick);
 editButton.addEventListener("click", handleEditButtonClick);
-/*saveButton.addEventListener("click", handleSaveButtonClick);*/
+form.addEventListener("submit", handleSaveButtonClick);

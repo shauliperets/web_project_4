@@ -31,6 +31,13 @@
   overflow: hidden;
 }
 
+.card__like-button {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+}
+
 .card__icon:hover {
   opacity: 0.5;
   cursor: pointer;
