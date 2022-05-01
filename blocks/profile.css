@@ -66,8 +66,8 @@
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 3;*/
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 17px;
   padding: 0;
   margin: 16px 0 0 0;
 }
@@ -116,6 +116,7 @@
   .profile {
     grid-template-columns: 282px;
     grid-template-rows: auto auto auto auto;
+    gap: 30px 0px;
     max-width: 282px;
     justify-items: center;
   }
@@ -132,11 +133,18 @@
   }
 
   .profile__title {
-    width: 224px;
-
+    width: 196px;
     font-weight: 500;
     font-size: 22px;
     line-height: 27px;
+  }
+
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+    margin: 0 0 0 10px;
+    padding: 0;
+    border: 0;
   }
 
   .profile__edit-image {
@@ -148,13 +156,15 @@
     grid-column-end: 2;
     grid-row-start: 3;
     grid-row-end: 4;
+    text-align: center;
+    padding-bottom: 5px;
   }
 
   .profile__add-button {
     grid-column-start: 1;
     grid-column-end: 2;
-    grid-row-start: 4;
-    grid-row-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 4;
     max-width: 282px;
   }
 }

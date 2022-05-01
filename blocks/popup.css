@@ -35,7 +35,6 @@
   width: 430px;
   z-index: 1;
   background-color: white;
-
   border-radius: 10px;
 }
 
@@ -95,4 +94,28 @@
 
 .popup__close-button:hover {
   opacity: 0.6;
+}
+
+@media screen and (max-width: 630px) {
+  .popup__title {
+    width: 238px;
+  }
+
+  .popup__container {
+    width: 282px;
+    border-radius: 10px;
+  }
+
+  .popup__input {
+    width: 238px;
+  }
+
+  .popup__save-button {
+    width: 238px;
+    height: 46px;
+  }
+
+  .popup__close-button {
+    left: 280px;
+  }
 }
