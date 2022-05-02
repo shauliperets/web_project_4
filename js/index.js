@@ -2,8 +2,6 @@ let closeButton = document.querySelector(".popup__close-button");
 
 let editButton = document.querySelector(".profile__edit-button");
 
-/*let saveButton = document.querySelector(".popup__save-button");*/
-
 let popup = document.querySelector(".popup");
 
 let title = document.querySelector(".profile__title");
@@ -37,16 +35,6 @@ function handleSaveButtonClick(event) {
 
   popup.classList.toggle("popup_display");
 }
-
-/*
-function handleIconClick(id) {
-  if (document.getElementById(id).src.includes("/heart.svg")) {
-    document.getElementById(id).src = "./images/heart-black.svg";
-  } else {
-    document.getElementById(id).src = "./images/heart.svg";
-  }
-}
-*/
 
 closeButton.addEventListener("click", handleCloseButtonClick);
 editButton.addEventListener("click", handleEditButtonClick);
