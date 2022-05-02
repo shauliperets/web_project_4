@@ -14,25 +14,26 @@ let inputs = document.querySelectorAll(".popup__input");
 
 let form = document.querySelector(".popup__form");
 
-function handleEditButtonClick(event) {
-  event.preventDefault();
+let popupName = document.getElementById("popup-name");
 
+let popupAboutMe = document.getElementById("popup-about-me");
+
+function handleEditButtonClick() {
   popup.classList.toggle("popup_display");
 
-  document.getElementById("popup-name").value = title.textContent;
-  document.getElementById("popup-about-me").value = subtitle.textContent;
+  popupName.value = title.textContent;
+  popupAboutMe.value = subtitle.textContent;
 }
 
-function handleCloseButtonClick(event) {
-  event.preventDefault();
+function handleCloseButtonClick() {
   popup.classList.toggle("popup_display");
 }
 
 function handleSaveButtonClick(event) {
   event.preventDefault();
 
-  title.textContent = document.getElementById("popup-name").value;
-  subtitle.textContent = document.getElementById("popup-about-me").value;
+  title.textContent = popupName.value;
+  subtitle.textContent = popupAboutMe.value;
 
   popup.classList.toggle("popup_display");
 }

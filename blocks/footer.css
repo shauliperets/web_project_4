@@ -10,11 +10,15 @@
 @media screen and (max-width: 940px) {
   .footer {
     width: 600px;
+    font-size: 16px;
+    line-height: 20px;
   }
 }
 
 @media screen and (max-width: 630px) {
   .footer {
     width: 282px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }

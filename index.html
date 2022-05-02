@@ -9,169 +9,166 @@
     <title>Around The U.S</title>
   </head>
   <body class="page">
-    <form class="popup__form">
-      <header class="header">
+    <header class="header">
+      <img src="./images/header.svg" alt="Header image" class="header__image" />
+    </header>
+    <main>
+      <section class="profile">
         <img
-          src="./images/header.svg"
-          alt="Header image"
-          class="header__image"
+          src="./images/image.jpg"
+          alt="Profile image"
+          class="profile__image"
         />
-      </header>
-      <main>
-        <section class="profile">
-          <img
-            src="./images/image.jpg"
-            alt="Profile image"
-            class="profile__image"
-          />
-          <div class="profile__content">
-            <div class="profile__title-panel">
-              <h1 class="profile__title">Jacques Cousteau</h1>
-              <button class="profile__edit-button">
-                <img
-                  class="profile__edit-image"
-                  src="./images/edit-button.svg"
-                  alt="Edit button"
-                />
-              </button>
-            </div>
-            <p class="profile__subtitle">Explorer</p>
+        <div class="profile__content">
+          <div class="profile__title-panel">
+            <h1 class="profile__title">Jacques Cousteau</h1>
+            <button class="profile__edit-button" type="button">
+              <img
+                class="profile__edit-image"
+                src="./images/edit-button.svg"
+                alt="Edit button"
+              />
+            </button>
           </div>
-          <button class="profile__add-button" type="button"></button>
-        </section>
-        <section class="elements">
-          <div class="card">
-            <img
-              src="./images/yosemite-valley.jpg"
-              alt="Yosemite Valley"
-              class="card__image"
-            />
-            <div class="card__title-panel">
-              <h2 class="card__title">Yosemite Valley</h2>
-              <button class="card__like-button" type="button">
-                <img
-                  id="heart-1"
-                  class="card__icon"
-                  src="./images/heart.svg"
-                  alt="Heart icon"
-                />
-              </button>
-            </div>
-          </div>
-
-          <div class="card">
-            <img
-              src="./images/lake-louise.png"
-              alt="Lake Louise"
-              class="card__image"
-            />
-            <div class="card__title-panel">
-              <h2 class="card__title">Lake Louise</h2>
-              <button class="card__like-button" type="button">
-                <img
-                  id="heart-2"
-                  class="card__icon"
-                  src="./images/heart.svg"
-                  alt="Heart icon"
-                />
-              </button>
-            </div>
-          </div>
-
-          <div class="card">
-            <img
-              src="./images/bald-mountains.png"
-              alt="Bald Mountains"
-              class="card__image"
-            />
-            <div class="card__title-panel">
-              <h2 class="card__title">Bald Mountains</h2>
-              <button class="card__like-button" type="button">
-                <img
-                  id="heart-3"
-                  class="card__icon"
-                  src="./images/heart.svg"
-                  alt="Heart icon"
-                />
-              </button>
-            </div>
-          </div>
-
-          <div class="card">
-            <img src="./images/latemar.png" alt="Latemar" class="card__image" />
-            <div class="card__title-panel">
-              <h2 class="card__title">Latemar</h2>
-              <button class="card__like-button" type="button">
-                <img
-                  id="heart-4"
-                  class="card__icon"
-                  src="./images/heart.svg"
-                  alt="Heart icon"
-                />
-              </button>
-            </div>
-          </div>
-
-          <div class="card">
-            <img
-              src="./images/vanoise-national.png"
-              alt="Vanoise National"
-              class="card__image"
-            />
-            <div class="card__title-panel">
-              <h2 class="card__title">Vanoise National Park</h2>
-              <button class="card__like-button" type="button">
-                <img
-                  id="heart-5"
-                  class="card__icon"
-                  src="./images/heart.svg"
-                  alt="Heart icon"
-                />
-              </button>
-            </div>
-          </div>
-
-          <div class="card">
-            <img
-              src="./images/lago-di-braies.png"
-              alt="Lago di Braies"
-              class="card__image"
-            />
-            <div class="card__title-panel">
-              <h2 class="card__title">Lago di Braies</h2>
-              <button class="card__like-button" type="button">
-                <img
-                  id="heart-6"
-                  class="card__icon"
-                  src="./images/heart.svg"
-                  alt="Heart icon"
-                />
-              </button>
-            </div>
-          </div>
-        </section>
-      </main>
-      <footer class="footer">© 2021 Around The U.S.</footer>
-      <div class="popup">
-        <div class="popup__container">
-          <button class="popup__close-button" type="button"></button>
-          <h2 class="popup__title">Edit profile</h2>
-          <input
-            id="popup-name"
-            type="text"
-            class="popup__input"
-            placeholder="Name"
-          />
-          <input
-            id="popup-about-me"
-            type="text"
-            class="popup__input"
-            placeholder="About me"
-          />
-          <button type="submit" class="popup__save-button">Save</button>
+          <p class="profile__subtitle">Explorer</p>
         </div>
-      </div>
-    </form>
+        <button class="profile__add-button" type="button"></button>
+      </section>
+      <section class="elements">
+        <div class="card">
+          <img
+            src="./images/yosemite-valley.jpg"
+            alt="Yosemite Valley"
+            class="card__image"
+          />
+          <div class="card__title-panel">
+            <h2 class="card__title">Yosemite Valley</h2>
+            <button class="card__like-button" type="button">
+              <img
+                id="heart-1"
+                class="card__icon"
+                src="./images/heart.svg"
+                alt="Heart icon"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="./images/lake-louise.png"
+            alt="Lake Louise"
+            class="card__image"
+          />
+          <div class="card__title-panel">
+            <h2 class="card__title">Lake Louise</h2>
+            <button class="card__like-button" type="button">
+              <img
+                id="heart-2"
+                class="card__icon"
+                src="./images/heart.svg"
+                alt="Heart icon"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="./images/bald-mountains.png"
+            alt="Bald Mountains"
+            class="card__image"
+          />
+          <div class="card__title-panel">
+            <h2 class="card__title">Bald Mountains</h2>
+            <button class="card__like-button" type="button">
+              <img
+                id="heart-3"
+                class="card__icon"
+                src="./images/heart.svg"
+                alt="Heart icon"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="./images/latemar.png" alt="Latemar" class="card__image" />
+          <div class="card__title-panel">
+            <h2 class="card__title">Latemar</h2>
+            <button class="card__like-button" type="button">
+              <img
+                id="heart-4"
+                class="card__icon"
+                src="./images/heart.svg"
+                alt="Heart icon"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="./images/vanoise-national.png"
+            alt="Vanoise National"
+            class="card__image"
+          />
+          <div class="card__title-panel">
+            <h2 class="card__title">Vanoise National Park</h2>
+            <button class="card__like-button" type="button">
+              <img
+                id="heart-5"
+                class="card__icon"
+                src="./images/heart.svg"
+                alt="Heart icon"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="./images/lago-di-braies.png"
+            alt="Lago di Braies"
+            class="card__image"
+          />
+          <div class="card__title-panel">
+            <h2 class="card__title">Lago di Braies</h2>
+            <button class="card__like-button" type="button">
+              <img
+                id="heart-6"
+                class="card__icon"
+                src="./images/heart.svg"
+                alt="Heart icon"
+              />
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__paragraph">© 2021 Around The U.S.</p>
+    </footer>
+    <div class="popup">
+      <form class="popup__form">
+        <button class="popup__close-button" type="button"></button>
+        <h2 class="popup__title">Edit profile</h2>
+        <input
+          id="popup-name"
+          type="text"
+          class="popup__input"
+          placeholder="Name"
+        />
+        <input
+          id="popup-about-me"
+          type="text"
+          class="popup__input"
+          placeholder="About me"
+        />
+        <button type="submit" class="popup__save-button">Save</button>
+      </form>
+    </div>
+
     <script src="./js/index.js"></script>
   </body>
 </html>
