@@ -25,9 +25,7 @@
   display: block;
 }
 
-.popup__form {
-  display: flex;
-  flex-direction: column;
+.popup__container {
   position: relative;
   top: 50%;
   left: 50%;
@@ -36,6 +34,11 @@
   z-index: 1;
   background-color: white;
   border-radius: 10px;
+}
+
+.popup__form {
+  display: flex;
+  flex-direction: column;
 }
 
 .popup__title {
@@ -103,7 +106,7 @@
     line-height: 22px;
   }
 
-  .popup__form {
+  .popup__container {
     width: 282px;
   }
 
