@@ -16,6 +16,54 @@ let popupName = document.getElementById("popup-name");
 
 let popupAboutMe = document.getElementById("popup-about-me");
 
+//---------------------------------
+
+const cardsData = [
+  {
+    name: "Yosemite Valley",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+  },
+  {
+    name: "Lake Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg",
+  },
+];
+
+initialCards(cardsData);
+
+function initialCards(data) {
+  const cardTemplate = document.querySelector("#card").content;
+
+  const cards = document.querySelector(".elements");
+
+  let cardElement;
+
+  data.forEach((card) => {
+    cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+
+    cardElement.querySelector(".card__title").textContent = card.name;
+    cardElement.querySelector(".card__image").src = card.link;
+
+    cards.append(cardElement);
+  });
+}
+
 function handleEditButtonClick() {
   popup.classList.toggle("popup_display");
 
