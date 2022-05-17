@@ -2,6 +2,8 @@ let closeEditPanelButton = document.querySelector(".popup__close-button");
 
 let closeAddPanelButton = document.querySelector(".add-popup__close-button");
 
+const closeImageButton = document.querySelector(".image-popup__close-button");
+
 let editButton = document.querySelector(".profile__edit-button");
 
 let addButton = document.querySelector(".profile__add-button");
@@ -9,6 +11,8 @@ let addButton = document.querySelector(".profile__add-button");
 let popup = document.querySelector(".popup");
 
 let addPopup = document.querySelector(".add-popup");
+
+const imagePopup = document.querySelector(".image-popup");
 
 let title = document.querySelector(".profile__title");
 
@@ -72,6 +76,16 @@ function initialCards(data) {
     cardElement.querySelector(".card__delete-button").addEventListener("click", () => {
       handleDeleteClick(cardId);
     });
+    cardElement.querySelector(".card__image").addEventListener("click", () => {
+      imagePopup.querySelector(".image-popup__image").src = card.link;
+      imagePopup.classList.toggle("image-popup__display");
+
+      //let left = Number(imagePopup.querySelector(".image-popup__image").clientWidth) * 1.15;
+
+      //imagePopup.querySelector(".image-popup__close-button").style.left += left + "px";
+
+      console.log("w=>", left);
+    });
 
     cards.append(cardElement);
   });
@@ -94,6 +108,10 @@ function handleCloseEditPanelButtonClick() {
 
 function handleCloseAddPanelButtonClick() {
   addPopup.classList.toggle("add-popup_display");
+}
+
+function handleCloseImageButtonClick() {
+  imagePopup.classList.toggle("image-popup__display");
 }
 
 function handleSaveButtonClick(event) {
@@ -146,11 +164,11 @@ function handleDeleteClick(id) {
   const cards = document.querySelector(".elements");
 
   document.getElementById(id).remove();
-  console.log("delete clicked", id);
 }
 
 closeEditPanelButton.addEventListener("click", handleCloseEditPanelButtonClick);
 closeAddPanelButton.addEventListener("click", handleCloseAddPanelButtonClick);
+closeImageButton.addEventListener("click", handleCloseImageButtonClick);
 editButton.addEventListener("click", handleEditButtonClick);
 addButton.addEventListener("click", handleAddButtonClick);
 form.addEventListener("submit", handleSaveButtonClick);
