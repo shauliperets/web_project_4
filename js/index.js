@@ -60,11 +60,18 @@ function initialCards(data) {
 
   let cardElement;
 
-  data.forEach((card) => {
+  data.forEach((card, index) => {
     cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-
+    let cardId = "card-" + index;
+    cardElement.id = cardId;
     cardElement.querySelector(".card__title").textContent = card.name;
     cardElement.querySelector(".card__image").src = card.link;
+    cardElement.querySelector(".card__like-button").addEventListener("click", () => {
+      handleIconClick(cardId);
+    });
+    cardElement.querySelector(".card__delete-button").addEventListener("click", () => {
+      handleDeleteClick(cardId);
+    });
 
     cards.append(cardElement);
   });
@@ -73,28 +80,12 @@ function initialCards(data) {
 function handleEditButtonClick() {
   popup.classList.toggle("popup_display");
 
-  console.log("add edit");
-
   popupName.value = title.textContent;
   popupAboutMe.value = subtitle.textContent;
 }
 
 function handleAddButtonClick() {
   addPopup.classList.toggle("add-popup_display");
-
-  console.log("add clicked");
-
-  //document.querySelector(".popup__title").textContent = "New Place";
-
-  //document.querySelector("#popup-name").value = "";
-  //document.querySelector("#popup-name").placeholder = "Title";
-
-  //document.querySelector("#popup-about-me").value = "";
-  //document.querySelector("#popup-about-me").placeholder = "Image link";
-  //document.querySelector("#popup-name").placeholder = "Title";
-
-  //document.getElementsByName("popup-name")[0].value = "";
-  //document.getElementsByName("popup-name").placeholder = "your message";
 }
 
 function handleCloseEditPanelButtonClick() {
@@ -123,16 +114,39 @@ function handleCreateButtonClick(event) {
 
   let cardElement = cardTemplate.querySelector(".card").cloneNode(true);
 
-  console.log(document.querySelector("#add-popup-title").value);
+  let cardId = "card-" + new Date().getTime();
 
-  cardElement.querySelector(".card__title").textContent =
-    document.querySelector("#add-popup-title").value;
-  cardElement.querySelector(".card__image").src =
-    document.querySelector("#add-popup-link").value;
+  cardElement.id = cardId;
 
-  cards.append(cardElement);
+  cardElement.querySelector(".card__title").textContent = document.querySelector("#add-popup-title").value;
+  cardElement.querySelector(".card__image").src = document.querySelector("#add-popup-link").value;
+
+  cardElement.querySelector(".card__like-button").addEventListener("click", () => {
+    handleIconClick(cardId);
+  });
+
+  cardElement.querySelector(".card__delete-button").addEventListener("click", () => {
+    handleDeleteClick(cardId);
+  });
+
+  cards.prepend(cardElement);
 
   addPopup.classList.toggle("add-popup_display");
+}
+
+function handleIconClick(id) {
+  if (document.getElementById(id).querySelector(".card__icon").src.includes("/heart.svg")) {
+    document.getElementById(id).querySelector(".card__icon").src = "./images/heart-black.svg";
+  } else {
+    document.getElementById(id).querySelector(".card__icon").src = "./images/heart.svg";
+  }
+}
+
+function handleDeleteClick(id) {
+  const cards = document.querySelector(".elements");
+
+  document.getElementById(id).remove();
+  console.log("delete clicked", id);
 }
 
 closeEditPanelButton.addEventListener("click", handleCloseEditPanelButtonClick);

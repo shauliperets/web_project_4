@@ -14,20 +14,12 @@
     </header>
     <main>
       <section class="profile">
-        <img
-          src="./images/image.jpg"
-          alt="Profile image"
-          class="profile__image"
-        />
+        <img src="./images/image.jpg" alt="Profile image" class="profile__image" />
         <div class="profile__content">
           <div class="profile__title-panel">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button class="profile__edit-button" type="button">
-              <img
-                class="profile__edit-image"
-                src="./images/edit-button.svg"
-                alt="Edit button"
-              />
+              <img class="profile__edit-image" src="./images/edit-button.svg" alt="Edit button" />
             </button>
           </div>
           <p class="profile__subtitle">Explorer</p>
@@ -44,18 +36,8 @@
         <form class="popup__form">
           <button class="popup__close-button" type="button"></button>
           <h2 class="popup__title">Edit profile</h2>
-          <input
-            id="popup-name"
-            type="text"
-            class="popup__input"
-            placeholder="Name"
-          />
-          <input
-            id="popup-about-me"
-            type="text"
-            class="popup__input"
-            placeholder="About me"
-          />
+          <input id="popup-name" type="text" class="popup__input" placeholder="Name" />
+          <input id="popup-about-me" type="text" class="popup__input" placeholder="About me" />
           <button type="submit" class="popup__save-button">Save</button>
         </form>
       </div>
@@ -66,18 +48,8 @@
         <form class="add-popup__form">
           <button class="add-popup__close-button" type="button"></button>
           <h2 class="add-popup__title">New place</h2>
-          <input
-            id="add-popup-title"
-            type="text"
-            class="add-popup__input"
-            placeholder="Title"
-          />
-          <input
-            id="add-popup-link"
-            type="text"
-            class="add-popup__input"
-            placeholder="Image link"
-          />
+          <input id="add-popup-title" type="text" class="add-popup__input" placeholder="Title" />
+          <input id="add-popup-link" type="text" class="add-popup__input" placeholder="Image link" />
           <button type="submit" class="add-popup__create-button">Create</button>
         </form>
       </div>
@@ -85,20 +57,14 @@
 
     <template id="card">
       <div class="card">
-        <img
-          src="./images/lago-di-braies.png"
-          alt="Lago di Braies"
-          class="card__image"
-        />
+        <button class="card__delete-button">
+          <img src="./images/delete-icon.svg" alt="" />
+        </button>
+        <img src="./images/lago-di-braies.png" alt="Lago di Braies" class="card__image" />
         <div class="card__title-panel">
           <h2 class="card__title">Lago di Braies</h2>
           <button class="card__like-button" type="button">
-            <img
-              id="heart-6"
-              class="card__icon"
-              src="./images/heart.svg"
-              alt="Heart icon"
-            />
+            <img id="heart-6" class="card__icon" src="./images/heart.svg" alt="Heart icon" />
           </button>
         </div>
       </div>
