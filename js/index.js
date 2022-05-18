@@ -1,32 +1,32 @@
-let closeEditPanelButton = document.querySelector(".popup__close-button");
+const closeEditPanelButton = document.querySelector(".popup__close-button");
 
-let closeAddPanelButton = document.querySelector(".add-popup__close-button");
+const closeAddPanelButton = document.querySelector(".add-popup__close-button");
 
 const closeImageButton = document.querySelector(".image-popup__close-button");
 
-let editButton = document.querySelector(".profile__edit-button");
+const editButton = document.querySelector(".profile__edit-button");
 
-let addButton = document.querySelector(".profile__add-button");
+const addButton = document.querySelector(".profile__add-button");
 
-let popup = document.querySelector(".popup");
+const popup = document.querySelector(".popup");
 
-let addPopup = document.querySelector(".add-popup");
+const addPopup = document.querySelector(".add-popup");
 
 const imagePopup = document.querySelector(".image-popup");
 
-let title = document.querySelector(".profile__title");
+const title = document.querySelector(".profile__title");
 
-let subtitle = document.querySelector(".profile__subtitle");
+const subtitle = document.querySelector(".profile__subtitle");
 
-let inputs = document.querySelectorAll(".popup__input");
+const inputs = document.querySelectorAll(".popup__input");
 
-let form = document.querySelector(".popup__form");
+const form = document.querySelector(".popup__form");
 
-let addForm = document.querySelector(".add-popup__form");
+const addForm = document.querySelector(".add-popup__form");
 
-let popupName = document.getElementById("popup-name");
+const popupName = document.getElementById("popup-name");
 
-let popupAboutMe = document.getElementById("popup-about-me");
+const popupAboutMe = document.getElementById("popup-about-me");
 
 const cardsData = [
   {
@@ -126,7 +126,7 @@ function handleCreateButtonClick(event) {
 
   let cardElement = cardTemplate.querySelector(".card").cloneNode(true);
 
-  let cardId = "card-" + new Date().getTime();
+  const cardId = "card-" + new Date().getTime();
 
   cardElement.id = cardId;
 
