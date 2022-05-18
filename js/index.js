@@ -70,6 +70,7 @@ function initialCards(data) {
     cardElement.id = cardId;
     cardElement.querySelector(".card__title").textContent = card.name;
     cardElement.querySelector(".card__image").src = card.link;
+    cardElement.querySelector(".card__image").alt = card.name + " image";
     cardElement.querySelector(".card__like-button").addEventListener("click", () => {
       handleIconClick(cardId);
     });
@@ -78,6 +79,7 @@ function initialCards(data) {
     });
     cardElement.querySelector(".card__image").addEventListener("click", () => {
       imagePopup.querySelector(".image-popup__image").src = card.link;
+      imagePopup.querySelector(".image-popup__image").alt = card.name + " image";
       imagePopup.classList.toggle("image-popup__display");
     });
 
@@ -132,6 +134,7 @@ function handleCreateButtonClick(event) {
 
   cardElement.querySelector(".card__title").textContent = document.querySelector("#add-popup-title").value;
   cardElement.querySelector(".card__image").src = document.querySelector("#add-popup-link").value;
+  cardElement.querySelector(".card__image").alt = document.querySelector("#add-popup-title").value + " image";
 
   cardElement.querySelector(".card__like-button").addEventListener("click", () => {
     handleIconClick(cardId);
@@ -144,6 +147,9 @@ function handleCreateButtonClick(event) {
     imagePopup.querySelector(".image-popup__image").src = document
       .getElementById(cardId)
       .querySelector(".card__image").src;
+
+    imagePopup.querySelector(".image-popup__image").alt = document.querySelector("#add-popup-title").value + " image";
+
     imagePopup.classList.toggle("image-popup__display");
   });
 
