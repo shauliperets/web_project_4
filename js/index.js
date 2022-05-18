@@ -79,12 +79,6 @@ function initialCards(data) {
     cardElement.querySelector(".card__image").addEventListener("click", () => {
       imagePopup.querySelector(".image-popup__image").src = card.link;
       imagePopup.classList.toggle("image-popup__display");
-
-      //let left = Number(imagePopup.querySelector(".image-popup__image").clientWidth) * 1.15;
-
-      //imagePopup.querySelector(".image-popup__close-button").style.left += left + "px";
-
-      console.log("w=>", left);
     });
 
     cards.append(cardElement);
@@ -92,22 +86,22 @@ function initialCards(data) {
 }
 
 function handleEditButtonClick() {
-  popup.classList.toggle("popup_display");
+  popup.classList.toggle("popup__display");
 
   popupName.value = title.textContent;
   popupAboutMe.value = subtitle.textContent;
 }
 
 function handleAddButtonClick() {
-  addPopup.classList.toggle("add-popup_display");
+  addPopup.classList.toggle("add-popup__display");
 }
 
 function handleCloseEditPanelButtonClick() {
-  popup.classList.toggle("popup_display");
+  popup.classList.toggle("popup__display");
 }
 
 function handleCloseAddPanelButtonClick() {
-  addPopup.classList.toggle("add-popup_display");
+  addPopup.classList.toggle("add-popup__display");
 }
 
 function handleCloseImageButtonClick() {
@@ -120,7 +114,7 @@ function handleSaveButtonClick(event) {
   title.textContent = popupName.value;
   subtitle.textContent = popupAboutMe.value;
 
-  popup.classList.toggle("popup_display");
+  popup.classList.toggle("popup__display");
 }
 
 function handleCreateButtonClick(event) {
@@ -146,10 +140,16 @@ function handleCreateButtonClick(event) {
   cardElement.querySelector(".card__delete-button").addEventListener("click", () => {
     handleDeleteClick(cardId);
   });
+  cardElement.querySelector(".card__image").addEventListener("click", () => {
+    imagePopup.querySelector(".image-popup__image").src = document
+      .getElementById(cardId)
+      .querySelector(".card__image").src;
+    imagePopup.classList.toggle("image-popup__display");
+  });
 
   cards.prepend(cardElement);
 
-  addPopup.classList.toggle("add-popup_display");
+  addPopup.classList.toggle("add-popup__display");
 }
 
 function handleIconClick(id) {

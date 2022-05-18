@@ -33,7 +33,7 @@
   transition: opacity 300ms;
 }
 
-.popup_display {
+.popup__display {
   display: block;
 
   animation: fadein 1s;
