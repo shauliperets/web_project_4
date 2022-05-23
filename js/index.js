@@ -69,31 +69,31 @@ function initializeCards(data) {
   });
 }
 
-function toggleImagePopup() {
-  imagePopup.classList.toggle("popup_open");
+function togglePopup(popup) {
+  popup.classList.toggle("popup_open");
 }
 
 function handleEditProfileButtonClick() {
-  editProfilePopup.classList.toggle("popup_open");
+  togglePopup(editProfilePopup);
 
   popupName.value = title.textContent;
   popupAboutMe.value = subtitle.textContent;
 }
 
 function handleToggleAddCardPopupButtonClick() {
-  addCardPopup.classList.toggle("popup_open");
+  togglePopup(addCardPopup);
 }
 
 function handleToggleEditProfilePopupButtonClick() {
-  editProfilePopup.classList.toggle("popup_open");
+  togglePopup(editProfilePopup);
 }
 
 function handleCloseAddPanelButtonClick() {
-  addCardPopup.classList.toggle("popup_open");
+  togglePopup(addCardPopup);
 }
 
 function handleCloseFloatImageButtonClick() {
-  imagePopup.classList.toggle("popup_open");
+  togglePopup(imagePopup);
 }
 
 function handleProfileFormSubmit(event) {
@@ -120,18 +120,18 @@ function handleCardFormSubmit(event) {
 function renderCard(cardElement) {
   const cards = document.querySelector(".elements");
 
+  const imagePopupPhoto = imagePopup.querySelector(".popup__image");
+
   cards.prepend(cardElement);
 
   const renderedCard = document.querySelector(`#${cardElement.id}`);
 
   renderedCard.querySelector(".card__image").addEventListener("click", () => {
-    imagePopup.querySelector(".popup__image").src = document
-      .getElementById(renderedCard.id)
-      .querySelector(".card__image").src;
+    imagePopupPhoto.src = document.getElementById(renderedCard.id).querySelector(".card__image").src;
 
-    imagePopup.querySelector(".popup__image").alt = renderedCard.querySelector(".card__image").alt;
+    imagePopupPhoto.alt = renderedCard.querySelector(".card__image").alt;
 
-    toggleImagePopup();
+    togglePopup(imagePopup);
   });
 }
 
