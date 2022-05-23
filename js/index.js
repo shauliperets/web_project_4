@@ -2,21 +2,17 @@ const closeEditProfileButton = document.querySelector(".popup__close-button_type
 
 const closeAddCardButton = document.querySelector(".popup__close-button_type_add-card");
 
-const closeImageButton = document.querySelector(".image-popup__close-button");
+const closeFloatImageButton = document.querySelector(".popup__close-button_type_float-image");
 
 const editProfileButton = document.querySelector(".profile__edit-button");
 
 const addCardButton = document.querySelector(".profile__add-button");
 
-//popup__button_type_create-button
-
-//popup__button_type_save-button
-
 const editProfilePopup = document.querySelector(".popup_type_edit-profile");
 
 const addCardPopup = document.querySelector(".popup_type_add-card");
 
-const imagePopup = document.querySelector(".image-popup");
+const imagePopup = document.querySelector(".popup__type_float-image");
 
 const title = document.querySelector(".profile__title");
 
@@ -59,22 +55,20 @@ const cardsData = [
   },
 ];
 
-initialCards(cardsData);
+initializeCards(cardsData);
 
-function initialCards(data) {
+function initializeCards(data) {
   const cardTemplate = document.querySelector("#card").content;
 
   const cards = document.querySelector(".elements");
 
-  let cardElement;
-
   data.forEach((card, index) => {
-    cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+    const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
     const cardId = "card-" + index;
     cardElement.id = cardId;
     cardElement.querySelector(".card__title").textContent = card.name;
     cardElement.querySelector(".card__image").src = card.link;
-    cardElement.querySelector(".card__image").alt = card.name + " image";
+    cardElement.querySelector(".card__image").alt = `Photo of ${card.name}`;
     cardElement.querySelector(".card__like-button").addEventListener("click", () => {
       handleIconClick(cardId);
     });
@@ -82,13 +76,18 @@ function initialCards(data) {
       handleDeleteClick(cardId);
     });
     cardElement.querySelector(".card__image").addEventListener("click", () => {
-      imagePopup.querySelector(".image-popup__image").src = card.link;
-      imagePopup.querySelector(".image-popup__image").alt = card.name + " image";
-      imagePopup.classList.toggle("image-popup__display");
+      const imageElement = imagePopup.querySelector(".popup__image");
+      imageElement.src = card.link;
+      imageElement.alt = `Photo of ${card.name}`;
+      toggleImagePopup();
     });
 
     cards.append(cardElement);
   });
+}
+
+function toggleImagePopup() {
+  imagePopup.classList.toggle("popup_open");
 }
 
 function handleEditProfileButtonClick() {
@@ -110,11 +109,11 @@ function handleCloseAddPanelButtonClick() {
   addCardPopup.classList.toggle("popup_open");
 }
 
-function handleCloseImageButtonClick() {
-  imagePopup.classList.toggle("image-popup__display");
+function handleCloseFloatImageButtonClick() {
+  imagePopup.classList.toggle("popup_open");
 }
 
-function handleSaveButtonClick(event) {
+function handleProfileFormSubmit(event) {
   event.preventDefault();
 
   title.textContent = popupName.value;
@@ -123,24 +122,38 @@ function handleSaveButtonClick(event) {
   editProfilePopup.classList.toggle("popup_open");
 }
 
-function handleCreateButtonClick(event) {
+function handleCardFormSubmit(event) {
   event.preventDefault();
 
-  console.log("create clicked");
+  const cardElement = createCard();
 
-  const cardTemplate = document.querySelector("#card").content;
+  renderCard(cardElement);
 
+  addCardForm.reset();
+
+  handleToggleAddCardPopupButtonClick();
+}
+
+function renderCard(cardElement) {
   const cards = document.querySelector(".elements");
+
+  cards.prepend(cardElement);
+}
+
+function createCard() {
+  const cardTemplate = document.querySelector("#card").content;
 
   let cardElement = cardTemplate.querySelector(".card").cloneNode(true);
 
   const cardId = "card-" + new Date().getTime();
 
+  const placeTitle = document.querySelector("#popup-title").value;
+
   cardElement.id = cardId;
 
-  cardElement.querySelector(".card__title").textContent = document.querySelector("#popup-title").value;
+  cardElement.querySelector(".card__title").textContent = placeTitle;
   cardElement.querySelector(".card__image").src = document.querySelector("#popup-link").value;
-  cardElement.querySelector(".card__image").alt = document.querySelector("#popup-title").value + " image";
+  cardElement.querySelector(".card__image").alt = `Photo of ${placeTitle}`;
 
   cardElement.querySelector(".card__like-button").addEventListener("click", () => {
     handleIconClick(cardId);
@@ -150,25 +163,22 @@ function handleCreateButtonClick(event) {
     handleDeleteClick(cardId);
   });
   cardElement.querySelector(".card__image").addEventListener("click", () => {
-    imagePopup.querySelector(".image-popup__image").src = document
-      .getElementById(cardId)
-      .querySelector(".card__image").src;
+    imagePopup.querySelector(".popup__image").src = document.getElementById(cardId).querySelector(".card__image").src;
 
-    imagePopup.querySelector(".image-popup__image").alt = document.querySelector("#add-popup-title").value + " image";
+    imagePopup.querySelector(".popup__image").alt = `Photo of ${placeTitle}`;
 
-    imagePopup.classList.toggle("image-popup__display");
+    toggleImagePopup();
   });
 
-  cards.prepend(cardElement);
-
-  handleToggleAddCardPopupButtonClick();
+  return cardElement;
 }
 
 function handleIconClick(id) {
-  if (document.getElementById(id).querySelector(".card__icon").src.includes("/heart.svg")) {
-    document.getElementById(id).querySelector(".card__icon").src = "./images/heart-black.svg";
+  const likeIcon = document.getElementById(id).querySelector(".card__icon");
+  if (likeIcon.src.includes("/heart.svg")) {
+    likeIcon.src = "./images/heart-black.svg";
   } else {
-    document.getElementById(id).querySelector(".card__icon").src = "./images/heart.svg";
+    likeIcon.src = "./images/heart.svg";
   }
 }
 
@@ -180,8 +190,8 @@ function handleDeleteClick(id) {
 
 closeEditProfileButton.addEventListener("click", handleToggleEditProfilePopupButtonClick);
 closeAddCardButton.addEventListener("click", handleToggleAddCardPopupButtonClick);
-closeImageButton.addEventListener("click", handleCloseImageButtonClick);
+closeFloatImageButton.addEventListener("click", handleCloseFloatImageButtonClick);
 editProfileButton.addEventListener("click", handleEditProfileButtonClick);
 addCardButton.addEventListener("click", handleToggleAddCardPopupButtonClick);
-editProfileForm.addEventListener("submit", handleSaveButtonClick);
-addCardForm.addEventListener("submit", handleCreateButtonClick);
+editProfileForm.addEventListener("submit", handleProfileFormSubmit);
+addCardForm.addEventListener("submit", handleCardFormSubmit);
