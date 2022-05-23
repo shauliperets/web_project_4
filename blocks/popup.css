@@ -105,24 +105,7 @@
   opacity: 0.8;
 }
 
-/*
 .popup__image {
-  background-image: url(../images/lake-louise.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-
-  border: 3px solid blue;
-
-  padding: 0;
-  margin: 0;
-
-  width: 880px;
-  height: 540px;
-}*/
-
-.popup__image {
-  /*max-width: 75vw;
-  max-height: 75vh;*/
   object-fit: cover;
 }
 
@@ -144,15 +127,13 @@
   opacity: 0.6;
 }
 
-.popup__type_float-image {
+.popup__float-image {
   position: fixed;
   top: 0;
   left: 0;
-  /*width: 100%;
-  height: 100vh;*/
 }
 
-.popup__type_float-image:before {
+.popup__float-image:before {
   background-color: black;
   opacity: 0.5;
   content: "";

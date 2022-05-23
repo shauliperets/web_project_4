@@ -12,7 +12,7 @@ const editProfilePopup = document.querySelector(".popup_type_edit-profile");
 
 const addCardPopup = document.querySelector(".popup_type_add-card");
 
-const imagePopup = document.querySelector(".popup__type_float-image");
+const imagePopup = document.querySelector(".popup__float-image");
 
 const title = document.querySelector(".profile__title");
 
