@@ -63,29 +63,6 @@ function initializeCards(data) {
   const cards = document.querySelector(".elements");
 
   data.forEach((cardData, index) => {
-    /*
-    const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-    const cardId = "card-" + index;
-    cardElement.id = cardId;
-    cardElement.querySelector(".card__title").textContent = card.name;
-    cardElement.querySelector(".card__image").src = card.link;
-    cardElement.querySelector(".card__image").alt = `Photo of ${card.name}`;
-    cardElement.querySelector(".card__like-button").addEventListener("click", () => {
-      handleIconClick(cardId);
-    });
-    cardElement.querySelector(".card__delete-button").addEventListener("click", () => {
-      handleDeleteClick(cardId);
-    });
-    cardElement.querySelector(".card__image").addEventListener("click", () => {
-      const imageElement = imagePopup.querySelector(".popup__image");
-      imageElement.src = card.link;
-      imageElement.alt = `Photo of ${card.name}`;
-      toggleImagePopup();
-    });*/
-    //cards.append(cardElement);
-
-    //console.log("foreach =>", cardData);
-
     const card = createCard(index, cardData.name, cardData.link);
 
     renderCard(card);
@@ -147,8 +124,6 @@ function renderCard(cardElement) {
 
   const renderedCard = document.querySelector(`#${cardElement.id}`);
 
-  console.log("img =>", imagePopup.querySelector(".popup__image").src);
-
   renderedCard.querySelector(".card__image").addEventListener("click", () => {
     imagePopup.querySelector(".popup__image").src = document
       .getElementById(renderedCard.id)
@@ -169,7 +144,7 @@ function createCard(cardId, placeTitle, placeLink) {
 
   if (typeof placeTitle == "undefined") placeTitle = document.querySelector("#popup-title").value;
 
-  if (typeof placeLink == "undefined") placeTitle = document.querySelector("#popup-link").value;
+  if (typeof placeLink == "undefined") placeLink = document.querySelector("#popup-link").value;
 
   cardElement.id = `card-${cardId}`;
 
@@ -182,26 +157,15 @@ function createCard(cardId, placeTitle, placeLink) {
   });
 
   cardElement.querySelector(".card__delete-button").addEventListener("click", () => {
-    handleDeleteClick(cardId);
+    handleDeleteClick(`card-${cardId}`);
   });
-
-  //console.log("crateCard.cardElement =>", cardElement.id, cardId);
-
-  /*
-  cardElement.querySelector(".card__image").addEventListener("click", () => {
-    imagePopup.querySelector(".popup__image").src = document.getElementById(cardId).querySelector(".card__image").src;
-
-    imagePopup.querySelector(".popup__image").alt = `Photo of ${placeTitle}`;
-
-    toggleImagePopup();
-  });
-  */
 
   return cardElement;
 }
 
 function handleIconClick(id) {
-  const likeIcon = document.getElementById(id).querySelector(".card__icon");
+  const likeIcon = document.getElementById(`card-${id}`).querySelector(".card__icon");
+
   if (likeIcon.src.includes("/heart.svg")) {
     likeIcon.src = "./images/heart-black.svg";
   } else {
