@@ -127,13 +127,13 @@
   opacity: 0.6;
 }
 
-.popup__float-image {
+.popup_float-image {
   position: fixed;
   top: 0;
   left: 0;
 }
 
-.popup__float-image:before {
+.popup_float-image:before {
   background-color: black;
   opacity: 0.5;
   content: "";
