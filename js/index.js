@@ -28,6 +28,8 @@ const popupName = document.getElementById("popup-name");
 
 const popupAboutMe = document.getElementById("popup-about-me");
 
+const imagePopupPhoto = imagePopup.querySelector(".popup__image");
+
 const cardsData = [
   {
     name: "Yosemite Valley",
@@ -106,7 +108,13 @@ function handleProfileFormSubmit(event) {
 function handleCardFormSubmit(event) {
   event.preventDefault();
 
-  const cardElement = createCard(undefined, undefined, undefined);
+  const cardId = new Date().getTime();
+
+  const placeTitle = document.querySelector("#popup-title").value;
+
+  const placeLink = document.querySelector("#popup-link").value;
+
+  const cardElement = createCard(cardId, placeTitle, placeLink);
 
   renderCard(cardElement);
 
@@ -118,31 +126,15 @@ function handleCardFormSubmit(event) {
 function renderCard(cardElement) {
   const cards = document.querySelector(".elements");
 
-  const imagePopupPhoto = imagePopup.querySelector(".popup__image");
-
   cards.prepend(cardElement);
 
   const renderedCard = document.querySelector(`#${cardElement.id}`);
-
-  renderedCard.querySelector(".card__image").addEventListener("click", () => {
-    imagePopupPhoto.src = document.getElementById(renderedCard.id).querySelector(".card__image").src;
-
-    imagePopupPhoto.alt = renderedCard.querySelector(".card__image").alt;
-
-    togglePopup(imagePopup);
-  });
 }
 
 function createCard(cardId, placeTitle, placeLink) {
   const cardTemplate = document.querySelector("#card").content;
 
-  let cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-
-  if (typeof cardId == "undefined") cardId = new Date().getTime();
-
-  if (typeof placeTitle == "undefined") placeTitle = document.querySelector("#popup-title").value;
-
-  if (typeof placeLink == "undefined") placeLink = document.querySelector("#popup-link").value;
+  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
 
   cardElement.id = `card-${cardId}`;
 
@@ -156,6 +148,14 @@ function createCard(cardId, placeTitle, placeLink) {
 
   cardElement.querySelector(".card__delete-button").addEventListener("click", () => {
     handleDeleteClick(`card-${cardId}`);
+  });
+
+  cardElement.querySelector(".card__image").addEventListener("click", () => {
+    imagePopupPhoto.src = document.getElementById(cardElement.id).querySelector(".card__image").src;
+
+    imagePopupPhoto.alt = `Photo of ${placeTitle}`;
+
+    togglePopup(imagePopup);
   });
 
   return cardElement;

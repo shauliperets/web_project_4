@@ -1,6 +1,6 @@
 .profile {
   display: grid;
-  grid-template-columns: 120px 445px 24px 391px;
+  grid-template-columns: 120px 445px 24px 200px;
   grid-template-rows: auto;
   gap: 31px;
   max-width: 880px;
@@ -72,13 +72,12 @@
   grid-column-end: 5;
   width: 150px;
   height: 50px;
-  margin-left: 49px;
+  margin-left: 59px;
   background-color: transparent;
   border: 0;
   cursor: pointer;
   background-image: url("../images/add-button.svg");
   background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .profile__add-button:hover {
