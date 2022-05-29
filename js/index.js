@@ -58,8 +58,6 @@ const cardsData = [
 initializeCards(cardsData);
 
 function initializeCards(data) {
-  const cardTemplate = document.querySelector("#card").content;
-
   const cards = document.querySelector(".elements");
 
   data.forEach((cardData, index) => {
@@ -102,7 +100,7 @@ function handleProfileFormSubmit(event) {
   title.textContent = popupName.value;
   subtitle.textContent = popupAboutMe.value;
 
-  editProfilePopup.classList.toggle("popup_open");
+  togglePopup(editProfilePopup);
 }
 
 function handleCardFormSubmit(event) {
