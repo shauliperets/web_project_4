@@ -183,4 +183,5 @@ closeFloatImageButton.addEventListener("click", handleCloseFloatImageButtonClick
 editProfileButton.addEventListener("click", handleEditProfileButtonClick);
 addCardButton.addEventListener("click", handleToggleAddCardPopupButtonClick);
 editProfileForm.addEventListener("submit", handleProfileFormSubmit);
+
 addCardForm.addEventListener("submit", handleCardFormSubmit);
