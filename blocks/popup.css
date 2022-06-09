@@ -65,7 +65,7 @@
 
 .popup__input {
   margin: 0 auto;
-  margin-bottom: 30px;
+  /*margin-bottom: 30px;*/
   width: 358px;
   font-weight: 400;
   font-size: 14px;
@@ -73,6 +73,22 @@
   color: #000000;
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.popup__input-error {
+  color: red;
+  margin: 0 auto;
+  width: 358px;
+  padding: 0 0 30px 0;
+  visibility: hidden;
+}
+
+.popup__input-error_active {
+  color: red;
+  margin: 0 auto;
+  width: 358px;
+  padding: 0 0 30px 0;
+  visibility: visible;
 }
 
 .popup__button_type_save-button {

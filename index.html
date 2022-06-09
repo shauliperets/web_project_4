@@ -36,8 +36,26 @@
         <form class="popup__form popup__form_type_edit-profile">
           <button class="popup__close-button popup__close-button_type_edit-profile" type="button"></button>
           <h2 class="popup__title">Edit profile</h2>
-          <input id="popup-name" type="text" class="popup__input" placeholder="Name" required />
-          <input id="popup-about-me" type="text" class="popup__input" placeholder="About me" required />
+          <input
+            id="popup-name"
+            type="text"
+            class="popup__input"
+            placeholder="Name"
+            required
+            minlength="2"
+            maxlength="40"
+          />
+          <div id="popup-name-error" class="popup__input-error">error span</div>
+          <input
+            id="popup-about-me"
+            type="text"
+            class="popup__input"
+            placeholder="About me"
+            required
+            minlength="2"
+            maxlength="200"
+          />
+          <div id="popup-about-me-error" class="popup__input-error">error span</div>
           <button type="submit" class="popup__button popup__button_type_save-button">Save</button>
         </form>
       </div>
