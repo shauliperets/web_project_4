@@ -195,13 +195,17 @@ function handleDeleteClick(id) {
 }
 
 function showInputError(form, input) {
+  console.log("show", input.id, input.validity);
   const errorElement = form.querySelector(`#${input.id}-error`);
   errorElement.textContent = input.validationMessage;
+  input.classList.add("popup__input_active");
   errorElement.classList.add("popup__input-error_active");
 }
 
 function hideInputError(form, input) {
+  console.log("hide", input.id, input.validity);
   const errorElement = form.querySelector(`#${input.id}-error`);
+  input.classList.remove("popup__input_active");
   errorElement.classList.remove("popup__input-error_active");
 }
 

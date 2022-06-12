@@ -45,7 +45,7 @@
             minlength="2"
             maxlength="40"
           />
-          <div id="popup-name-error" class="popup__input-error">error span</div>
+          <div id="popup-name-error" class="popup__input-error"></div>
           <input
             id="popup-about-me"
             type="text"
@@ -55,7 +55,7 @@
             minlength="2"
             maxlength="200"
           />
-          <div id="popup-about-me-error" class="popup__input-error">error span</div>
+          <div id="popup-about-me-error" class="popup__input-error"></div>
           <button type="submit" class="popup__button popup__button_type_save-button">Save</button>
         </form>
       </div>
@@ -66,8 +66,18 @@
         <form class="popup__form popup__form_type_add-card">
           <button class="popup__close-button popup__close-button_type_add-card" type="button"></button>
           <h2 class="popup__title">New place</h2>
-          <input id="popup-title" type="text" class="popup__input" placeholder="Title" />
-          <input id="popup-link" type="text" class="popup__input" placeholder="Image link" />
+          <input
+            id="popup-title"
+            type="text"
+            class="popup__input"
+            placeholder="Title"
+            required
+            minlength="1"
+            maxlength="30"
+          />
+          <div id="popup-title-error" class="popup__input-error"></div>
+          <input id="popup-link" type="text" class="popup__input" placeholder="Image link" type="url" required />
+          <div id="popup-link-error" class="popup__input-error"></div>
           <button type="submit" class="popup__button popup__button_type_create-button">Create</button>
         </form>
       </div>

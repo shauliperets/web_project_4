@@ -75,6 +75,10 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.popup__input_active {
+  border-bottom: 1px solid #ff0000;
+}
+
 .popup__input-error {
   color: red;
   margin: 0 auto;
@@ -84,10 +88,6 @@
 }
 
 .popup__input-error_active {
-  color: red;
-  margin: 0 auto;
-  width: 358px;
-  padding: 0 0 30px 0;
   visibility: visible;
 }
 
