@@ -195,7 +195,7 @@ function handleDeleteClick(id) {
 }
 
 function showInputError(form, input) {
-  console.log("show", input.id, input.validity);
+  //console.log("show", input.id, input.validity);
   const errorElement = form.querySelector(`#${input.id}-error`);
   errorElement.textContent = input.validationMessage;
   input.classList.add("popup__input_active");
@@ -203,7 +203,7 @@ function showInputError(form, input) {
 }
 
 function hideInputError(form, input) {
-  console.log("hide", input.id, input.validity);
+  //console.log("hide", input.id, input.validity);
   const errorElement = form.querySelector(`#${input.id}-error`);
   input.classList.remove("popup__input_active");
   errorElement.classList.remove("popup__input-error_active");
@@ -217,12 +217,38 @@ function checkInputValidity(form, input) {
   }
 }
 
+function hasInvalidInput(inputs) {
+  return inputs.some((input) => {
+    return !input.validity.valid;
+  });
+}
+
+function toggleButtonState(inputs, button) {
+  if (hasInvalidInput(inputs)) {
+    button.classList.add("popup__button_inactive");
+    //console.log("invalid");
+  } else {
+    button.classList.remove("popup__button_inactive");
+    //console.log("valid");
+  }
+}
+
 function setEventListeners(form) {
   const inputs = Array.from(form.querySelectorAll(".popup__input"));
+  const button = form.querySelector(".popup__button");
+
+  //console.log(form, inputs, button);
+
+  popupName.value = title.textContent;
+  popupAboutMe.value = subtitle.textContent;
+
+  toggleButtonState(inputs, button);
 
   inputs.forEach(function (input) {
     input.addEventListener("input", function () {
       checkInputValidity(form, input);
+
+      toggleButtonState(inputs, button);
     });
   });
 }
