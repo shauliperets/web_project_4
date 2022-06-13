@@ -34,6 +34,10 @@ const popupAboutMeError = document.querySelector("#popup-about-me-error");
 
 const imagePopupPhoto = imagePopup.querySelector(".popup__image");
 
+const popup = document.querySelector(".popup");
+
+//console.log("1==", popup);
+
 const cardsData = [
   {
     name: "Yosemite Valley",
@@ -75,6 +79,10 @@ function initializeCards(data) {
 
 function togglePopup(popup) {
   popup.classList.toggle("popup_open");
+}
+
+function closePopup(popup) {
+  popup.classList.remove("popup_open");
 }
 
 function handleEditProfileButtonClick() {
@@ -261,6 +269,15 @@ function enableValidation() {
   });
 }
 
+function handleOverlay(event) {
+  const classesList = Object.assign([], event.target.classList);
+
+  if (classesList.includes("popup")) {
+    event.target.classList.remove("popup_open");
+    //popup.classList.remove("popup_open");
+  }
+}
+
 enableValidation();
 
 closeEditProfileButton.addEventListener("click", handleToggleEditProfilePopupButtonClick);
@@ -270,5 +287,14 @@ editProfileButton.addEventListener("click", handleEditProfileButtonClick);
 addCardButton.addEventListener("click", handleToggleAddCardPopupButtonClick);
 editProfileForm.addEventListener("submit", handleProfileFormSubmit);
 addCardForm.addEventListener("submit", handleCardFormSubmit);
+document.addEventListener("click", handleOverlay);
 
-//popupName.addEventListener("input", handleInputEvent);
+document.addEventListener("keypress", function (event) {
+  if (event.key == "Enter") {
+    editProfilePopup.classList.remove("popup_open");
+
+    addCardPopup.classList.remove("popup_open");
+
+    imagePopup.classList.remove("popup_open");
+  }
+});
