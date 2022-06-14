@@ -274,7 +274,6 @@ function handleOverlay(event) {
 
   if (classesList.includes("popup")) {
     event.target.classList.remove("popup_open");
-    //popup.classList.remove("popup_open");
   }
 }
 
@@ -290,6 +289,8 @@ addCardForm.addEventListener("submit", handleCardFormSubmit);
 document.addEventListener("click", handleOverlay);
 
 document.addEventListener("keypress", function (event) {
+  event.preventDefault();
+
   if (event.key == "Enter") {
     editProfilePopup.classList.remove("popup_open");
 
