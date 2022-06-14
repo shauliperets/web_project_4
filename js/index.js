@@ -36,8 +36,6 @@ const imagePopupPhoto = imagePopup.querySelector(".popup__image");
 
 const popup = document.querySelector(".popup");
 
-//console.log("1==", popup);
-
 const cardsData = [
   {
     name: "Yosemite Valley",
@@ -173,19 +171,6 @@ function createCard(cardId, placeTitle, placeLink) {
   return cardElement;
 }
 
-/*function handleInputEvent(event) {
-  console.log("target =>", event.target.validationMessage);
-
-  popupNameError.textContent = event.target.validationMessage;
-}*/
-
-/*
-function handleInputEvent(inputElement, errorElement) {
-  console.log("target =>", evinputElementent.target.validationMessage);
-
-  errorElement.textContent = inputElement.target.validationMessage;
-}*/
-
 function handleIconClick(id) {
   const likeIcon = document.getElementById(`card-${id}`).querySelector(".card__icon");
 
@@ -202,83 +187,6 @@ function handleDeleteClick(id) {
   document.getElementById(id).remove();
 }
 
-function showInputError(form, input) {
-  //console.log("show", input.id, input.validity);
-  const errorElement = form.querySelector(`#${input.id}-error`);
-  errorElement.textContent = input.validationMessage;
-  input.classList.add("popup__input_active");
-  errorElement.classList.add("popup__input-error_active");
-}
-
-function hideInputError(form, input) {
-  //console.log("hide", input.id, input.validity);
-  const errorElement = form.querySelector(`#${input.id}-error`);
-  input.classList.remove("popup__input_active");
-  errorElement.classList.remove("popup__input-error_active");
-}
-
-function checkInputValidity(form, input) {
-  if (input.validity.valid) {
-    hideInputError(form, input);
-  } else {
-    showInputError(form, input);
-  }
-}
-
-function hasInvalidInput(inputs) {
-  return inputs.some((input) => {
-    return !input.validity.valid;
-  });
-}
-
-function toggleButtonState(inputs, button) {
-  if (hasInvalidInput(inputs)) {
-    button.classList.add("popup__button_inactive");
-    //console.log("invalid");
-  } else {
-    button.classList.remove("popup__button_inactive");
-    //console.log("valid");
-  }
-}
-
-function setEventListeners(form) {
-  const inputs = Array.from(form.querySelectorAll(".popup__input"));
-  const button = form.querySelector(".popup__button");
-
-  //console.log(form, inputs, button);
-
-  popupName.value = title.textContent;
-  popupAboutMe.value = subtitle.textContent;
-
-  toggleButtonState(inputs, button);
-
-  inputs.forEach(function (input) {
-    input.addEventListener("input", function () {
-      checkInputValidity(form, input);
-
-      toggleButtonState(inputs, button);
-    });
-  });
-}
-
-function enableValidation() {
-  const forms = Array.from(document.querySelectorAll(".popup__form"));
-
-  forms.forEach(function (form) {
-    setEventListeners(form);
-  });
-}
-
-function handleOverlay(event) {
-  const classesList = Object.assign([], event.target.classList);
-
-  if (classesList.includes("popup")) {
-    event.target.classList.remove("popup_open");
-  }
-}
-
-enableValidation();
-
 closeEditProfileButton.addEventListener("click", handleToggleEditProfilePopupButtonClick);
 closeAddCardButton.addEventListener("click", handleToggleAddCardPopupButtonClick);
 closeFloatImageButton.addEventListener("click", handleCloseFloatImageButtonClick);
@@ -286,16 +194,3 @@ editProfileButton.addEventListener("click", handleEditProfileButtonClick);
 addCardButton.addEventListener("click", handleToggleAddCardPopupButtonClick);
 editProfileForm.addEventListener("submit", handleProfileFormSubmit);
 addCardForm.addEventListener("submit", handleCardFormSubmit);
-document.addEventListener("click", handleOverlay);
-
-document.addEventListener("keypress", function (event) {
-  event.preventDefault();
-
-  if (event.key == "Enter") {
-    editProfilePopup.classList.remove("popup_open");
-
-    addCardPopup.classList.remove("popup_open");
-
-    imagePopup.classList.remove("popup_open");
-  }
-});

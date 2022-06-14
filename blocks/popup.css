@@ -65,7 +65,6 @@
 
 .popup__input {
   margin: 0 auto;
-  /*margin-bottom: 30px;*/
   width: 358px;
   font-weight: 400;
   font-size: 14px;
@@ -127,8 +126,7 @@
   opacity: 0.2;
 }
 
-/* ??? */
-.popup__save-button:hover {
+.popup__button:hover {
   opacity: 0.8;
 }
 
@@ -219,11 +217,19 @@
     /*width: 282px;*/
   }
 
+  .popup__container_type_edit-profile {
+    width: 282px;
+  }
+
+  .popup__container_type_add-card {
+    width: 282px;
+  }
+
   .popup__input {
     width: 238px;
   }
 
-  .popup__save-button {
+  .popup__button {
     width: 238px;
     height: 46px;
   }
