@@ -53,20 +53,6 @@ function setEventListeners(form, settings) {
 
   document.addEventListener("click", handleOverlay);
 
-  document.addEventListener("keypress", function (event) {
-    if (event.target.getAttribute("type") != "text" && event.target.getAttribute("type") != "url") {
-      event.preventDefault();
-    }
-
-    if (event.key == "Escape") {
-      editProfilePopup.classList.remove("popup_open");
-
-      addCardPopup.classList.remove("popup_open");
-
-      imagePopup.classList.remove("popup_open");
-    }
-  });
-
   inputs.forEach(function (input) {
     input.addEventListener("input", function () {
       checkInputValidity(form, input, settings);
