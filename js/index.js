@@ -18,61 +18,30 @@ const title = document.querySelector(".profile__title");
 
 const subtitle = document.querySelector(".profile__subtitle");
 
-const inputs = document.querySelectorAll(".popup__input");
-
 const editProfileForm = document.querySelector(".popup__form_type_edit-profile");
 
 const addCardForm = document.querySelector(".popup__form_type_add-card");
 
 const popupName = document.getElementById("popup-name");
 
-const popupNameError = document.querySelector("#popup-name-error");
-
 const popupAboutMe = document.getElementById("popup-about-me");
-
-const popupAboutMeError = document.querySelector("#popup-about-me-error");
 
 const imagePopupPhoto = imagePopup.querySelector(".popup__image");
 
 const popup = document.querySelector(".popup");
 
-const cardsData = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg",
-  },
-];
-
 initializeCards(cardsData);
 
 function initializeCards(data) {
-  const cards = document.querySelector(".elements");
-
   data.forEach((cardData, index) => {
     const card = createCard(index, cardData.name, cardData.link);
 
     renderCard(card);
   });
+}
+
+function clearInputs(popup) {
+  /* start here */
 }
 
 function openPopup(popup) {
@@ -85,6 +54,8 @@ function closePopup(popup) {
   popup.classList.remove("popup_open");
 
   document.removeEventListener("keypress", handelKeypressEvent);
+
+  clearInputs(popup);
 }
 
 function handleEditProfileButtonClick() {
