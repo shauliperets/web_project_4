@@ -40,8 +40,19 @@ function initializeCards(data) {
   });
 }
 
+function populateProfilePopup() {
+  popupName.value = title.textContent;
+  popupAboutMe.value = subtitle.textContent;
+}
+
+populateProfilePopup();
+
 function clearInputs(popup) {
-  /* start here */
+  const inputs = Array.from(popup.querySelectorAll(settings.inputSelector));
+
+  inputs.forEach(function (input) {
+    input.value = "";
+  });
 }
 
 function openPopup(popup) {
@@ -75,10 +86,6 @@ function handleCloseAddCardPopupButtonClick() {
 
 function handleCloseEditProfilePopupButtonClick() {
   closePopup(editProfilePopup);
-}
-
-function handleCloseAddPanelButtonClick() {
-  closePopup(addCardPopup);
 }
 
 function handleCloseFloatImageButtonClick() {
@@ -116,8 +123,6 @@ function renderCard(cardElement) {
   const cards = document.querySelector(".elements");
 
   cards.prepend(cardElement);
-
-  const renderedCard = document.querySelector(`#${cardElement.id}`);
 }
 
 function createCard(cardId, placeTitle, placeLink) {
@@ -132,7 +137,7 @@ function createCard(cardId, placeTitle, placeLink) {
   cardElement.querySelector(".card__image").alt = `Photo of ${placeTitle}`;
 
   cardElement.querySelector(".card__like-button").addEventListener("click", () => {
-    handleIconClick(cardId);
+    handleLikeIconClick(cardId);
   });
 
   cardElement.querySelector(".card__delete-button").addEventListener("click", () => {
@@ -150,7 +155,7 @@ function createCard(cardId, placeTitle, placeLink) {
   return cardElement;
 }
 
-function handleIconClick(id) {
+function handleLikeIconClick(id) {
   const likeIcon = document.getElementById(`card-${id}`).querySelector(".card__icon");
 
   if (likeIcon.src.includes("/heart.svg")) {
@@ -161,8 +166,6 @@ function handleIconClick(id) {
 }
 
 function handleDeleteClick(id) {
-  const cards = document.querySelector(".elements");
-
   document.getElementById(id).remove();
 }
 
@@ -172,11 +175,11 @@ function handelKeypressEvent(event) {
   }
 
   if (event.key == "Escape" || event.key == "q") {
-    editProfilePopup.classList.remove("popup_open");
+    closePopup(editProfilePopup);
 
-    addCardPopup.classList.remove("popup_open");
+    closePopup(addCardPopup);
 
-    imagePopup.classList.remove("popup_open");
+    closePopup(imagePopup);
   }
 }
 
