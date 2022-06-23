@@ -1,3 +1,9 @@
+import { cardsData } from "./cards-data.js";
+
+import { Card } from "./card.js";
+
+import { openPopup, closePopup } from "./handlers.js";
+
 const closeEditProfileButton = document.querySelector(".popup__close-button_type_edit-profile");
 
 const closeAddCardButton = document.querySelector(".popup__close-button_type_add-card");
@@ -33,8 +39,9 @@ const popup = document.querySelector(".popup");
 initializeCards(cardsData);
 
 function initializeCards(data) {
-  data.forEach((cardData, index) => {
-    const card = createCard(index, cardData.name, cardData.link);
+  cardsData.forEach((cardData, index) => {
+    //const card = createCard(index, cardData.name, cardData.link);
+    const card = new Card(index, cardData.name, cardData.link, "").generateCard();
 
     renderCard(card);
   });
@@ -46,28 +53,6 @@ function populateProfilePopup() {
 }
 
 populateProfilePopup();
-
-function clearInputs(popup) {
-  const inputs = Array.from(popup.querySelectorAll(settings.inputSelector));
-
-  inputs.forEach(function (input) {
-    input.value = "";
-  });
-}
-
-function openPopup(popup) {
-  popup.classList.add("popup_open");
-
-  document.addEventListener("keypress", handelKeypressEvent);
-}
-
-function closePopup(popup) {
-  popup.classList.remove("popup_open");
-
-  document.removeEventListener("keypress", handelKeypressEvent);
-
-  clearInputs(popup);
-}
 
 function handleEditProfileButtonClick() {
   openPopup(editProfilePopup);
@@ -110,7 +95,8 @@ function handleOpenCardFormSubmit(event) {
 
   const placeLink = document.querySelector("#popup-link").value;
 
-  const cardElement = createCard(cardId, placeTitle, placeLink);
+  //const cardElement = createCard(cardId, placeTitle, placeLink);
+  const cardElement = new Card(cardId, placeTitle, placeLink, "").generateCard();
 
   renderCard(cardElement);
 
@@ -125,6 +111,7 @@ function renderCard(cardElement) {
   cards.prepend(cardElement);
 }
 
+/*
 function createCard(cardId, placeTitle, placeLink) {
   const cardTemplate = document.querySelector("#card").content;
 
@@ -151,9 +138,11 @@ function createCard(cardId, placeTitle, placeLink) {
 
     openPopup(imagePopup);
   });
+  
 
   return cardElement;
 }
+*/
 
 function handleLikeIconClick(id) {
   const likeIcon = document.getElementById(`card-${id}`).querySelector(".card__icon");
@@ -162,24 +151,6 @@ function handleLikeIconClick(id) {
     likeIcon.src = "./images/heart-black.svg";
   } else {
     likeIcon.src = "./images/heart.svg";
-  }
-}
-
-function handleDeleteClick(id) {
-  document.getElementById(id).remove();
-}
-
-function handelKeypressEvent(event) {
-  if (event.target.getAttribute("type") != "text" && event.target.getAttribute("type") != "url") {
-    event.preventDefault();
-  }
-
-  if (event.key == "Escape" || event.key == "q") {
-    closePopup(editProfilePopup);
-
-    closePopup(addCardPopup);
-
-    closePopup(imagePopup);
   }
 }
 

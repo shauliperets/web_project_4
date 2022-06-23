@@ -1,3 +1,7 @@
+import { settings } from "./settings.js";
+
+import { closePopup } from "./handlers.js";
+
 function showInputError(form, input) {
   const errorElement = form.querySelector(`#${input.id}-error`);
   errorElement.textContent = input.validationMessage;
