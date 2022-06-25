@@ -4,6 +4,10 @@ import { Card } from "./card.js";
 
 import { openPopup, closePopup } from "./handlers.js";
 
+import { FormValidator } from "./validate.js";
+
+import { settings } from "./settings.js";
+
 const closeEditProfileButton = document.querySelector(".popup__close-button_type_edit-profile");
 
 const closeAddCardButton = document.querySelector(".popup__close-button_type_add-card");
@@ -153,6 +157,20 @@ function handleLikeIconClick(id) {
     likeIcon.src = "./images/heart.svg";
   }
 }
+
+function enableValidation() {
+  const forms = Array.from(document.querySelectorAll(settings.formSelector));
+
+  //console.log("index.enableValidation=>", settings);
+
+  forms.forEach(function (form) {
+    console.log("Form =>", form);
+    new FormValidator(settings, form).enableValidation();
+    //setEventListeners(form, settings);
+  });
+}
+
+enableValidation();
 
 closeEditProfileButton.addEventListener("click", handleCloseEditProfilePopupButtonClick);
 closeAddCardButton.addEventListener("click", handleCloseAddCardPopupButtonClick);

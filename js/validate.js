@@ -1,80 +1,89 @@
-import { settings } from "./settings.js";
+//import { settings } from "./settings.js";
 
 import { closePopup } from "./handlers.js";
 
-function showInputError(form, input) {
-  const errorElement = form.querySelector(`#${input.id}-error`);
-  errorElement.textContent = input.validationMessage;
-  input.classList.add(settings.inputErrorClass);
-  errorElement.classList.add(settings.errorClass);
-}
+export class FormValidator {
+  constructor(settings, formElement) {
+    this._settings = settings;
+    this._formElement = formElement;
 
-function hideInputError(form, input) {
-  const errorElement = form.querySelector(`#${input.id}-error`);
-  input.classList.remove(settings.inputErrorClass);
-  errorElement.classList.remove(settings.errorClass);
-}
-
-function checkInputValidity(form, input, settings) {
-  if (input.validity.valid) {
-    hideInputError(form, input, settings);
-  } else {
-    showInputError(form, input, settings);
+    //console.log("ctor settings", this._settings);
+    //console.log("ctor formElement", this._formElement);
   }
-}
 
-function hasInvalidInput(inputs) {
-  return inputs.some((input) => {
-    return !input.validity.valid;
-  });
-}
-
-function toggleButtonState(inputs, button, settings) {
-  if (hasInvalidInput(inputs)) {
-    button.classList.add(settings.inactiveButtonClass);
-    button.disabled = true;
-  } else {
-    button.classList.remove(settings.inactiveButtonClass);
-    button.disabled = false;
+  showInputError(form, input) {
+    const errorElement = form.querySelector(`#${input.id}-error`);
+    errorElement.textContent = input.validationMessage;
+    input.classList.add(settings.inputErrorClass);
+    errorElement.classList.add(settings.errorClass);
   }
-}
 
-function setEventListeners(form, settings) {
-  const inputs = Array.from(form.querySelectorAll(settings.inputSelector));
-  const button = form.querySelector(settings.submitButtonSelector);
+  hideInputError(form, input) {
+    const errorElement = form.querySelector(`#${input.id}-error`);
+    input.classList.remove(settings.inputErrorClass);
+    errorElement.classList.remove(settings.errorClass);
+  }
 
-  toggleButtonState(inputs, button, settings);
+  _checkInputValidity(form, input, settings) {
+    if (input.validity.valid) {
+      hideInputError(form, input, settings);
+    } else {
+      showInputError(form, input, settings);
+    }
+  }
 
-  inputs.forEach(function (input) {
-    input.addEventListener("input", function () {
-      checkInputValidity(form, input, settings);
+  _hasInvalidInput(inputs) {
+    return inputs.some((input) => {
+      return !input.validity.valid;
+    });
+  }
 
-      toggleButtonState(inputs, button, settings);
+  _toggleButtonState(inputs, button, settings) {
+    if (this._hasInvalidInput(inputs)) {
+      button.classList.add(settings.inactiveButtonClass);
+      button.disabled = true;
+    } else {
+      button.classList.remove(settings.inactiveButtonClass);
+      button.disabled = false;
+    }
+  }
+
+  _handleOverlay(event) {
+    if (event.target.classList.contains("popup")) {
+      closePopup(event.target);
+    }
+  }
+
+  _setEventListeners() {
+    const inputs = Array.from(this._formElement.querySelectorAll(this._settings.inputSelector));
+    const button = this._formElement.querySelector(this._settings.submitButtonSelector);
+
+    this._toggleButtonState(inputs, button, this._settings);
+
+    inputs.forEach(function (input) {
+      input.addEventListener("input", function () {
+        this._checkInputValidity(this._formElement, input, this._settings);
+
+        this._toggleButtonState(inputs, button, this._settings);
+      });
+
+      input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          button.click();
+        }
+      });
     });
 
-    input.addEventListener("keypress", function (event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        button.click();
-      }
-    });
-  });
-}
+    document.addEventListener("click", this._handleOverlay);
+  }
 
-function enableValidation(settings) {
-  const forms = Array.from(document.querySelectorAll(settings.formSelector));
+  enableValidation() {
+    //console.log("validate.enableValidation", this._settings);
+    //console.log("enle formElement", this._formElement);
 
-  forms.forEach(function (form) {
-    setEventListeners(form, settings);
-  });
-}
-
-function handleOverlay(event) {
-  if (event.target.classList.contains("popup")) {
-    closePopup(event.target);
+    this._setEventListeners();
   }
 }
 
-enableValidation(settings);
-
-document.addEventListener("click", handleOverlay);
+/*document.addEventListener("click", handleOverlay);*/
