@@ -213,10 +213,6 @@
     line-height: 22px;
   }
 
-  .popup__container {
-    /*width: 282px;*/
-  }
-
   .popup__container_type_edit-profile {
     width: 282px;
   }

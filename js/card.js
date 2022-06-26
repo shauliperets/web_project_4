@@ -1,6 +1,4 @@
-//import { openPopup } from "./index.js";
-
-import { openPopup, handleDeleteClick } from "./handlers.js";
+import { openPopup, handleDeleteClick, handleLikeIconClick } from "./utils.js";
 
 export class Card {
   constructor(cardId, text, image, selector) {
@@ -24,7 +22,7 @@ export class Card {
   }
 
   _getTemplate() {
-    const cardTemplate = document.querySelector("#card").content;
+    const cardTemplate = document.querySelector(this._selector).content;
 
     const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
 

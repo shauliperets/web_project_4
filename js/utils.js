@@ -1,5 +1,11 @@
 import { settings } from "./settings.js";
 
+export const editProfilePopup = document.querySelector(".popup_type_edit-profile");
+
+export const addCardPopup = document.querySelector(".popup_type_add-card");
+
+export const imagePopup = document.querySelector(".popup_float-image");
+
 function clearInputs(popup) {
   const inputs = Array.from(popup.querySelectorAll(settings.inputSelector));
 
@@ -38,4 +44,14 @@ function handelKeypressEvent(event) {
 
 export function handleDeleteClick(id) {
   document.getElementById(id).remove();
+}
+
+export function handleLikeIconClick(id) {
+  const likeIcon = document.getElementById(`card-${id}`).querySelector(".card__icon");
+
+  if (likeIcon.src.includes("/heart.svg")) {
+    likeIcon.src = "./images/heart-black.svg";
+  } else {
+    likeIcon.src = "./images/heart.svg";
+  }
 }

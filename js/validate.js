@@ -1,24 +1,21 @@
-//import { settings } from "./settings.js";
+import { settings } from "./settings.js";
 
-import { closePopup } from "./handlers.js";
+import { closePopup } from "./utils.js";
 
 export class FormValidator {
   constructor(settings, formElement) {
     this._settings = settings;
     this._formElement = formElement;
-
-    //console.log("ctor settings", this._settings);
-    //console.log("ctor formElement", this._formElement);
   }
 
-  showInputError(form, input) {
+  _showInputError(form, input) {
     const errorElement = form.querySelector(`#${input.id}-error`);
     errorElement.textContent = input.validationMessage;
     input.classList.add(settings.inputErrorClass);
     errorElement.classList.add(settings.errorClass);
   }
 
-  hideInputError(form, input) {
+  _hideInputError(form, input) {
     const errorElement = form.querySelector(`#${input.id}-error`);
     input.classList.remove(settings.inputErrorClass);
     errorElement.classList.remove(settings.errorClass);
@@ -26,9 +23,9 @@ export class FormValidator {
 
   _checkInputValidity(form, input, settings) {
     if (input.validity.valid) {
-      hideInputError(form, input, settings);
+      this._hideInputError(form, input, settings);
     } else {
-      showInputError(form, input, settings);
+      this._showInputError(form, input, settings);
     }
   }
 
@@ -54,14 +51,11 @@ export class FormValidator {
     }
   }
 
-  _setEventListeners() {
-    const inputs = Array.from(this._formElement.querySelectorAll(this._settings.inputSelector));
-    const button = this._formElement.querySelector(this._settings.submitButtonSelector);
+  _setEventListeners(inputs, button) {
+    inputs.forEach((input) => {
+      input.addEventListener("input", this._testFunc);
 
-    this._toggleButtonState(inputs, button, this._settings);
-
-    inputs.forEach(function (input) {
-      input.addEventListener("input", function () {
+      input.addEventListener("input", () => {
         this._checkInputValidity(this._formElement, input, this._settings);
 
         this._toggleButtonState(inputs, button, this._settings);
@@ -79,11 +73,10 @@ export class FormValidator {
   }
 
   enableValidation() {
-    //console.log("validate.enableValidation", this._settings);
-    //console.log("enle formElement", this._formElement);
+    const inputs = Array.from(this._formElement.querySelectorAll(this._settings.inputSelector));
+    const button = this._formElement.querySelector(this._settings.submitButtonSelector);
 
-    this._setEventListeners();
+    this._toggleButtonState(inputs, button, this._settings);
+    this._setEventListeners(inputs, button);
   }
 }
-
-/*document.addEventListener("click", handleOverlay);*/
