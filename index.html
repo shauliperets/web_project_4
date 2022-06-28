@@ -44,6 +44,7 @@
             required
             minlength="2"
             maxlength="40"
+            value="Jacques Cousteau"
           />
           <div id="popup-name-error" class="popup__input-error"></div>
           <input
@@ -54,6 +55,7 @@
             required
             minlength="2"
             maxlength="200"
+            value="Explorer"
           />
           <div id="popup-about-me-error" class="popup__input-error"></div>
           <button type="submit" class="popup__button popup__button_type_save-button">Save</button>
@@ -85,9 +87,11 @@
 
     <div class="popup popup_float-image">
       <div class="popup__container popup__container_type_float-image">
+      <div class="popup__image-container">
         <button class="popup__close-button popup__close-button_type_float-image" type="button"></button>
         <img src="./images/lake-louise.png" alt="" class="popup__image popup__image_type_float-image" />
       </div>
+      <div class="popup__image-description">Des</div>
     </div>
 
     <template id="card-default">
@@ -104,11 +108,7 @@
         </div>
       </div>
     </template>
-    <script src="./js/settings.js" type="module"></script>
-    <script src="./js/cards-data.js" type="module"></script>
-    <script src="./js/card.js" type="module"></script>
+
     <script src="./js/index.js" type="module"></script>
-    <script src="./js/validate.js" type="module"></script>
-    <script src="./js/utils.js" type="module"></script>
   </body>
 </html>

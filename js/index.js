@@ -1,10 +1,10 @@
 import { cardsData } from "./cards-data.js";
 
-import { Card } from "./card.js";
+import { Card } from "./Card.js";
 
 import { openPopup, closePopup, editProfilePopup, addCardPopup, imagePopup } from "./utils.js";
 
-import { FormValidator } from "./validate.js";
+import { FormValidator } from "./FormValidator.js";
 
 import { settings } from "./settings.js";
 
@@ -30,22 +30,19 @@ const popupName = document.getElementById("popup-name");
 
 const popupAboutMe = document.getElementById("popup-about-me");
 
+const placeTitle = document.querySelector("#popup-title");
+
+const placeLink = document.querySelector("#popup-link");
+
+const cards = document.querySelector(".elements");
+
 initializeCards(cardsData);
 
-function initializeCards(data) {
+function initializeCards(cardsData) {
   cardsData.forEach((cardData, index) => {
-    const card = new Card(index, cardData.name, cardData.link, cardData.selector).generateCard();
-
-    renderCard(card);
+    createCard(index, cardData.name, cardData.link, cardData.selector);
   });
 }
-
-function populateProfilePopup() {
-  popupName.value = title.textContent;
-  popupAboutMe.value = subtitle.textContent;
-}
-
-populateProfilePopup();
 
 function handleEditProfileButtonClick() {
   openPopup(editProfilePopup);
@@ -84,22 +81,20 @@ function handleOpenCardFormSubmit(event) {
 
   const cardId = new Date().getTime();
 
-  const placeTitle = document.querySelector("#popup-title").value;
-
-  const placeLink = document.querySelector("#popup-link").value;
-
-  const cardElement = new Card(cardId, placeTitle, placeLink, "#card-default").generateCard();
-
-  renderCard(cardElement);
+  createCard(cardId, placeTitle.value, placeLink.value, "#card-default");
 
   addCardForm.reset();
 
   handleCloseAddCardPopupButtonClick();
 }
 
-function renderCard(cardElement) {
-  const cards = document.querySelector(".elements");
+function createCard(cardId, placeTitle, placeLink, cardSelector) {
+  const card = new Card(cardId, placeTitle, placeLink, cardSelector);
+  const cardElement = card.generateCard();
+  renderCard(cardElement);
+}
 
+function renderCard(cardElement) {
   cards.prepend(cardElement);
 }
 

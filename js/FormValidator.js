@@ -1,6 +1,4 @@
-import { settings } from "./settings.js";
-
-import { closePopup } from "./utils.js";
+import { handleOverlay } from "./utils.js";
 
 export class FormValidator {
   constructor(settings, formElement) {
@@ -11,21 +9,21 @@ export class FormValidator {
   _showInputError(form, input) {
     const errorElement = form.querySelector(`#${input.id}-error`);
     errorElement.textContent = input.validationMessage;
-    input.classList.add(settings.inputErrorClass);
-    errorElement.classList.add(settings.errorClass);
+    input.classList.add(this._settings.inputErrorClass);
+    errorElement.classList.add(this._settings.errorClass);
   }
 
   _hideInputError(form, input) {
     const errorElement = form.querySelector(`#${input.id}-error`);
-    input.classList.remove(settings.inputErrorClass);
-    errorElement.classList.remove(settings.errorClass);
+    input.classList.remove(this._settings.inputErrorClass);
+    errorElement.classList.remove(this._settings.errorClass);
   }
 
-  _checkInputValidity(form, input, settings) {
+  _checkInputValidity(form, input) {
     if (input.validity.valid) {
-      this._hideInputError(form, input, settings);
+      this._hideInputError(form, input, this._settings);
     } else {
-      this._showInputError(form, input, settings);
+      this._showInputError(form, input, this._settings);
     }
   }
 
@@ -35,26 +33,18 @@ export class FormValidator {
     });
   }
 
-  _toggleButtonState(inputs, button, settings) {
+  _toggleButtonState(inputs, button) {
     if (this._hasInvalidInput(inputs)) {
-      button.classList.add(settings.inactiveButtonClass);
+      button.classList.add(this._settings.inactiveButtonClass);
       button.disabled = true;
     } else {
-      button.classList.remove(settings.inactiveButtonClass);
+      button.classList.remove(this._settings.inactiveButtonClass);
       button.disabled = false;
-    }
-  }
-
-  _handleOverlay(event) {
-    if (event.target.classList.contains("popup")) {
-      closePopup(event.target);
     }
   }
 
   _setEventListeners(inputs, button) {
     inputs.forEach((input) => {
-      input.addEventListener("input", this._testFunc);
-
       input.addEventListener("input", () => {
         this._checkInputValidity(this._formElement, input, this._settings);
 
@@ -69,7 +59,7 @@ export class FormValidator {
       });
     });
 
-    document.addEventListener("click", this._handleOverlay);
+    document.addEventListener("click", handleOverlay);
   }
 
   enableValidation() {
