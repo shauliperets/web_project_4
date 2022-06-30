@@ -10,12 +10,14 @@ export function openPopup(popup) {
   popup.classList.add("popup_open");
 
   document.addEventListener("keyup", handelKeypressEvent);
+  document.addEventListener("click", handleOverlay);
 }
 
 export function closePopup(popup) {
   popup.classList.remove("popup_open");
 
   document.removeEventListener("keyup", handelKeypressEvent);
+  document.removeEventListener("click", handleOverlay);
 }
 
 export function handleOverlay(event) {

@@ -58,8 +58,6 @@ export class FormValidator {
         }
       });
     });
-
-    document.addEventListener("click", handleOverlay);
   }
 
   enableValidation() {
