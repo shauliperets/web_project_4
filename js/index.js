@@ -8,6 +8,8 @@ import { FormValidator } from "./FormValidator.js";
 
 import { settings } from "./settings.js";
 
+import { Section } from "./Section.js";
+
 const closeEditProfileButton = document.querySelector(".popup__close-button_type_edit-profile");
 
 const closeAddCardButton = document.querySelector(".popup__close-button_type_add-card");
@@ -36,13 +38,38 @@ const placeLink = document.querySelector("#popup-link");
 
 const cards = document.querySelector(".elements");
 
+const section = new Section(
+  {
+    items: cardsData,
+    renderer: (cardData) => {
+      console.log("renderer callback");
+
+      createCard(cardData.id, cardData.name, cardData.link, cardData.selector);
+    },
+  },
+  "elements"
+);
+
+section.renderer();
+
+/*
+const profilePopup = PopupWithForm("popup_type_edit-profile", () => {
+  console.log("profile callback");
+});
+
+const addopup = PopupWithForm("popup_type_add-card", () => {
+  console.log("add card callback");
+});
+*/
+
+/*
 initializeCards(cardsData);
 
 function initializeCards(cardsData) {
   cardsData.forEach((cardData, index) => {
     createCard(index, cardData.name, cardData.link, cardData.selector);
   });
-}
+}*/
 
 function handleEditProfileButtonClick() {
   openPopup(editProfilePopup);

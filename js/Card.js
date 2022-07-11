@@ -1,7 +1,7 @@
 import { openPopup } from "./utils.js";
 
 export class Card {
-  constructor(cardId, text, image, selector) {
+  constructor(cardId, text, image, selector, handleCardClick) {
     this._cardId = cardId;
     this._text = text;
     this._image = image;
@@ -9,6 +9,7 @@ export class Card {
     this._imagePopup = document.querySelector(".popup_float-image");
     this._imagePopupPhoto = this._imagePopup.querySelector(".popup__image");
     this._imagePopupDescription = this._imagePopup.querySelector(".popup__image-description");
+    this._handleCardClick = handleCardClick;
   }
 
   generateCard() {
