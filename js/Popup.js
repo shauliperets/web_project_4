@@ -1,6 +1,7 @@
 class Popup {
   constructor(selector) {
-    this._selector = selector;
+    this._selector = document.querySelector(`.${selector}`);
+
     this._closeButton = document.querySelector(".popup__close-button");
     this._form = document.querySelector(".popup__form");
   }
@@ -26,16 +27,19 @@ class Popup {
   }
 
   _handleOverlay(event) {
+    console.log("_handleOverlay pressed");
+    console.log("event=>", event.target.classList);
     if (event.target.classList.contains("popup")) {
-      closePopup(event.target);
+      this.close();
     }
   }
 
   _handelKeypressEvent(event) {
+    console.log("_handelKeypressEvent pressed");
     event.preventDefault();
 
     if (event.key == "Escape" || event.key == "q") {
-      closePopup(this._selector);
+      this.close();
     }
   }
 }
@@ -46,7 +50,8 @@ class PopupWithImage extends Popup {
   }
 
   open() {
-    //change src
+    //change src too
+    super.open();
   }
 }
 
@@ -89,3 +94,5 @@ class PopupWithForm extends Popup {
     super.close();
   }
 }
+
+export { Popup, PopupWithForm, PopupWithImage };

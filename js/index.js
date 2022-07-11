@@ -10,6 +10,8 @@ import { settings } from "./settings.js";
 
 import { Section } from "./Section.js";
 
+import { Popup, PopupWithForm, PopupWithImage } from "./Popup.js";
+
 const closeEditProfileButton = document.querySelector(".popup__close-button_type_edit-profile");
 
 const closeAddCardButton = document.querySelector(".popup__close-button_type_add-card");
@@ -52,15 +54,9 @@ const section = new Section(
 
 section.renderer();
 
-/*
-const profilePopup = PopupWithForm("popup_type_edit-profile", () => {
-  console.log("profile callback");
-});
+const profilePopup = new PopupWithForm("popup_type_edit-profile", handleOpenProfileFormSubmit);
 
-const addopup = PopupWithForm("popup_type_add-card", () => {
-  console.log("add card callback");
-});
-*/
+const addopup = new PopupWithForm("popup_type_add-card", handleOpenCardFormSubmit);
 
 /*
 initializeCards(cardsData);
@@ -72,7 +68,8 @@ function initializeCards(cardsData) {
 }*/
 
 function handleEditProfileButtonClick() {
-  openPopup(editProfilePopup);
+  //openPopup(editProfilePopup);
+  profilePopup.open();
 
   popupName.value = title.textContent;
   popupAboutMe.value = subtitle.textContent;
@@ -82,12 +79,13 @@ function handleOpenAddCardPopupButtonClick() {
   openPopup(addCardPopup);
 }
 
-function handleCloseAddCardPopupButtonClick() {
-  closePopup(addCardPopup);
+function handleCloseEditProfilePopupButtonClick() {
+  //closePopup(editProfilePopup);
+  profilePopup.close();
 }
 
-function handleCloseEditProfilePopupButtonClick() {
-  closePopup(editProfilePopup);
+function handleCloseAddCardPopupButtonClick() {
+  closePopup(addCardPopup);
 }
 
 function handleCloseFloatImageButtonClick() {
