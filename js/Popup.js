@@ -9,49 +9,64 @@ class Popup {
   open() {
     this._selector.classList.add("popup_open");
 
-    document.addEventListener("keyup", this._handelKeypressEvent);
+    document.addEventListener("keyup", this._handleEscClose);
     document.addEventListener("click", this._handleOverlay);
   }
 
   close() {
     this._selector.classList.remove("popup_open");
 
-    document.removeEventListener("keyup", this._handelKeypressEvent);
+    document.removeEventListener("keyup", this._handleEscClose);
     document.removeEventListener("click", this._handleOverlay);
   }
-
-  _handleEscClose() {}
 
   setEventListeners() {
     this._closeButton.addEventListener("click", this.close);
   }
 
-  _handleOverlay(event) {
-    console.log("_handleOverlay pressed");
-    console.log("event=>", event.target.classList);
+  _handleOverlay = (event) => {
     if (event.target.classList.contains("popup")) {
       this.close();
+      console.log("_handleOverlay clicked");
     }
-  }
+  };
 
-  _handelKeypressEvent(event) {
-    console.log("_handelKeypressEvent pressed");
+  _handleEscClose = (event) => {
     event.preventDefault();
 
     if (event.key == "Escape" || event.key == "q") {
       this.close();
+      console.log("_handleEscClose clicked");
     }
-  }
+  };
 }
 
 class PopupWithImage extends Popup {
   constructor(selector) {
     super(selector);
+
+    //console.log("super._selector", this._selector);
+
+    this._imagePopupPhoto = this._selector.querySelector(".popup__image");
+    this._description = this._selector.querySelector(".popup__image-description");
   }
 
   open() {
     //change src too
     super.open();
+  }
+
+  getPhoto() {
+    return this._imagePopupPhoto;
+  }
+
+  getDescription() {
+    return this._description;
+  }
+
+  setImageSource(source) {
+    console.log("selector =>", this._imagePopupPhoto.src);
+    this._imagePopupPhoto.src = source;
   }
 }
 

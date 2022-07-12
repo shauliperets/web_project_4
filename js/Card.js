@@ -1,4 +1,6 @@
-import { openPopup } from "./utils.js";
+//import { openPopup } from "./utils.js";
+
+import { PopupWithImage } from "./Popup.js";
 
 export class Card {
   constructor(cardId, text, image, selector, handleCardClick) {
@@ -6,9 +8,12 @@ export class Card {
     this._text = text;
     this._image = image;
     this._selector = selector;
-    this._imagePopup = document.querySelector(".popup_float-image");
-    this._imagePopupPhoto = this._imagePopup.querySelector(".popup__image");
-    this._imagePopupDescription = this._imagePopup.querySelector(".popup__image-description");
+
+    //this._imagePopup = new PopupWithImage("popup_float-image");
+    //this._imagePopup = popupWithImage;
+    //this._imagePopup = document.querySelector(".popup_float-image");
+    //this._imagePopupPhoto = popupWithImage.getPhoto();
+    //this._imagePopupDescription = popupWithImage.getDescription();
     this._handleCardClick = handleCardClick;
   }
 
@@ -57,6 +62,10 @@ export class Card {
   }
 
   _setImageClick() {
+    console.log("from card.js");
+    this._element.querySelector(".card__image").addEventListener("click", this._handleCardClick);
+
+    /*
     this._element.querySelector(".card__image").addEventListener("click", () => {
       this._imagePopupPhoto.src = this._element.querySelector(".card__image").src;
 
@@ -64,8 +73,11 @@ export class Card {
 
       this._imagePopupDescription.textContent = this._text;
 
-      openPopup(this._imagePopup);
+      //openPopup(this._imagePopup);
+
+      this._imagePopup.open();
     });
+    */
   }
 
   _handleDeleteClick() {

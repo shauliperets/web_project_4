@@ -6,6 +6,7 @@ export const addCardPopup = document.querySelector(".popup_type_add-card");
 
 export const imagePopup = document.querySelector(".popup_float-image");
 
+/*
 export function openPopup(popup) {
   popup.classList.add("popup_open");
 
@@ -37,3 +38,4 @@ function handelKeypressEvent(event) {
     closePopup(imagePopup);
   }
 }
+*/

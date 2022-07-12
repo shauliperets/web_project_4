@@ -2,7 +2,7 @@ import { cardsData } from "./cards-data.js";
 
 import { Card } from "./Card.js";
 
-import { openPopup, closePopup, editProfilePopup, addCardPopup, imagePopup } from "./utils.js";
+//import { openPopup, closePopup, editProfilePopup, addCardPopup, imagePopup } from "./utils.js";
 
 import { FormValidator } from "./FormValidator.js";
 
@@ -40,23 +40,11 @@ const placeLink = document.querySelector("#popup-link");
 
 const cards = document.querySelector(".elements");
 
-const section = new Section(
-  {
-    items: cardsData,
-    renderer: (cardData) => {
-      console.log("renderer callback");
-
-      createCard(cardData.id, cardData.name, cardData.link, cardData.selector);
-    },
-  },
-  "elements"
-);
-
-section.renderer();
-
 const profilePopup = new PopupWithForm("popup_type_edit-profile", handleOpenProfileFormSubmit);
 
 const addopup = new PopupWithForm("popup_type_add-card", handleOpenCardFormSubmit);
+
+const imagePopupObj = new PopupWithImage("popup_float-image");
 
 /*
 initializeCards(cardsData);
@@ -75,21 +63,24 @@ function handleEditProfileButtonClick() {
   popupAboutMe.value = subtitle.textContent;
 }
 
-function handleOpenAddCardPopupButtonClick() {
-  openPopup(addCardPopup);
-}
-
 function handleCloseEditProfilePopupButtonClick() {
   //closePopup(editProfilePopup);
   profilePopup.close();
 }
 
+function handleOpenAddCardPopupButtonClick() {
+  //openPopup(addCardPopup);
+  addopup.open();
+}
+
 function handleCloseAddCardPopupButtonClick() {
-  closePopup(addCardPopup);
+  //closePopup(addCardPopup);
+  addopup.close();
 }
 
 function handleCloseFloatImageButtonClick() {
-  closePopup(imagePopup);
+  //closePopup(imagePopup);
+  imagePopupObj.close();
 }
 
 function handleOpenProfileFormSubmit(event) {
@@ -113,8 +104,28 @@ function handleOpenCardFormSubmit(event) {
   handleCloseAddCardPopupButtonClick();
 }
 
+//-->
+const handleCardClick = (event) => {
+  console.log(event.target.src);
+
+  imagePopupObj.setImageSource(event.target.src);
+
+  imagePopupObj.open();
+
+  /*
+  this._imagePopupPhoto.src = this._element.querySelector(".card__image").src;
+
+  this._imagePopupPhoto.alt = `Photo of ${this._image}`;
+
+  this._imagePopupDescription.textContent = this._text;
+
+  //openPopup(this._imagePopup);
+
+  this._imagePopup.open();*/
+};
+
 function createCard(cardId, placeTitle, placeLink, cardSelector) {
-  const card = new Card(cardId, placeTitle, placeLink, cardSelector);
+  const card = new Card(cardId, placeTitle, placeLink, cardSelector, handleCardClick);
   const cardElement = card.generateCard();
   renderCard(cardElement);
 }
@@ -130,6 +141,18 @@ function enableValidation() {
     new FormValidator(settings, form).enableValidation();
   });
 }
+
+const section = new Section(
+  {
+    items: cardsData,
+    renderer: (cardData) => {
+      createCard(cardData.id, cardData.name, cardData.link, cardData.selector);
+    },
+  },
+  "elements"
+);
+
+section.renderer();
 
 enableValidation();
 
