@@ -2,7 +2,9 @@ class Popup {
   constructor(selector) {
     this._selector = document.querySelector(`.${selector}`);
 
-    this._closeButton = document.querySelector(".popup__close-button");
+    console.log("selector =>", this._selector);
+
+    this._closeButton = this._selector.querySelector(".popup__close-button");
     this._form = document.querySelector(".popup__form");
   }
 
@@ -11,9 +13,13 @@ class Popup {
 
     document.addEventListener("keyup", this._handleEscClose);
     document.addEventListener("click", this._handleOverlay);
+
+    console.log("open - selector =>", this._selector);
   }
 
   close() {
+    console.log("close - selector =>", this._selector);
+
     this._selector.classList.remove("popup_open");
 
     document.removeEventListener("keyup", this._handleEscClose);
@@ -27,7 +33,6 @@ class Popup {
   _handleOverlay = (event) => {
     if (event.target.classList.contains("popup")) {
       this.close();
-      console.log("_handleOverlay clicked");
     }
   };
 
@@ -44,8 +49,6 @@ class Popup {
 class PopupWithImage extends Popup {
   constructor(selector) {
     super(selector);
-
-    //console.log("super._selector", this._selector);
 
     this._imagePopupPhoto = this._selector.querySelector(".popup__image");
     this._description = this._selector.querySelector(".popup__image-description");
@@ -65,7 +68,6 @@ class PopupWithImage extends Popup {
   }
 
   setImageSource(source) {
-    console.log("selector =>", this._imagePopupPhoto.src);
     this._imagePopupPhoto.src = source;
   }
 }
@@ -74,6 +76,10 @@ class PopupWithForm extends Popup {
   constructor(selector, submit) {
     super(selector);
     this._submit = submit;
+
+    //console.log("values =>", this._getInputValues());
+    //console.log("selector =>", this._selector);
+    //console.log("closeButton =>", this._closeButton);
   }
 
   close() {
@@ -82,22 +88,42 @@ class PopupWithForm extends Popup {
   }
 
   _getInputValues() {
-    this._inputList = this._element.querySelectorAll(".form__input");
+    this._inputList = this._selector.querySelectorAll(".popup__input");
+
+    //console.log("list =>", this._inputList);
+
+    //console.log("this._inputList =>", this._inputList);
+    //console.log("this._selector =>", this._selector);
 
     this._formValues = {};
-    this._inputList.forEach((input) => (this._formValues[input.name] = input.value));
+    this._inputList.forEach((input) => {
+      this._formValues[input.id] = input.value;
+      //console.log(`name: ${input.name}, value: ${input.value}`);
+    });
+
+    //console.log("values 2 =>", this._formValues);
 
     return this._formValues;
   }
 
-  setEventListeners() {
-    this._form.addEventListener("submit", this._handleSubmit);
-    this._selector.addEventListener("click", super.close);
+  _close() {
+    console.log("local close");
+    super.close();
   }
 
-  _handleSubmit(event) {
+  setEventListeners() {
+    //super.setEventListeners();
+
+    console.log("close =>", this._closeButton);
+
+    this._form.addEventListener("submit", this._handleSubmit);
+    this._selector.addEventListener("click", this._close);
+  }
+
+  _handleSubmit = (event) => {
     event.preventDefault();
 
+    console.log("target =>", event.target);
     const cardId = new Date().getTime();
 
     //in index
@@ -107,7 +133,7 @@ class PopupWithForm extends Popup {
 
     //handleCloseAddCardPopupButtonClick();
     super.close();
-  }
+  };
 }
 
 export { Popup, PopupWithForm, PopupWithImage };

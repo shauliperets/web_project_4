@@ -12,11 +12,7 @@ import { Section } from "./Section.js";
 
 import { Popup, PopupWithForm, PopupWithImage } from "./Popup.js";
 
-const closeEditProfileButton = document.querySelector(".popup__close-button_type_edit-profile");
-
-const closeAddCardButton = document.querySelector(".popup__close-button_type_add-card");
-
-const closeFloatImageButton = document.querySelector(".popup__close-button_type_float-image");
+import { UserInfo } from "./UserInfo.js";
 
 const editProfileButton = document.querySelector(".profile__edit-button");
 
@@ -42,9 +38,11 @@ const cards = document.querySelector(".elements");
 
 const profilePopup = new PopupWithForm("popup_type_edit-profile", handleOpenProfileFormSubmit);
 
-const addopup = new PopupWithForm("popup_type_add-card", handleOpenCardFormSubmit);
+const addPopup = new PopupWithForm("popup_type_add-card", handleOpenCardFormSubmit);
 
 const imagePopupObj = new PopupWithImage("popup_float-image");
+
+const userInfo = new UserInfo(title.textContent, subtitle.textContent);
 
 /*
 initializeCards(cardsData);
@@ -59,6 +57,8 @@ function handleEditProfileButtonClick() {
   //openPopup(editProfilePopup);
   profilePopup.open();
 
+  //profilePopup.
+
   popupName.value = title.textContent;
   popupAboutMe.value = subtitle.textContent;
 }
@@ -70,12 +70,12 @@ function handleCloseEditProfilePopupButtonClick() {
 
 function handleOpenAddCardPopupButtonClick() {
   //openPopup(addCardPopup);
-  addopup.open();
+  addPopup.open();
 }
 
 function handleCloseAddCardPopupButtonClick() {
   //closePopup(addCardPopup);
-  addopup.close();
+  addPopup.close();
 }
 
 function handleCloseFloatImageButtonClick() {
@@ -89,7 +89,7 @@ function handleOpenProfileFormSubmit(event) {
   title.textContent = popupName.value;
   subtitle.textContent = popupAboutMe.value;
 
-  closePopup(editProfilePopup);
+  addPopup.close();
 }
 
 function handleOpenCardFormSubmit(event) {
@@ -156,10 +156,13 @@ section.renderer();
 
 enableValidation();
 
-closeEditProfileButton.addEventListener("click", handleCloseEditProfilePopupButtonClick);
-closeAddCardButton.addEventListener("click", handleCloseAddCardPopupButtonClick);
-closeFloatImageButton.addEventListener("click", handleCloseFloatImageButtonClick);
+profilePopup.setEventListeners();
+addPopup.setEventListeners();
+
+//closeEditProfileButton.addEventListener("click", handleCloseEditProfilePopupButtonClick);
+//closeAddCardButton.addEventListener("click", handleCloseAddCardPopupButtonClick);
+//closeFloatImageButton.addEventListener("click", handleCloseFloatImageButtonClick);
 editProfileButton.addEventListener("click", handleEditProfileButtonClick);
 addCardButton.addEventListener("click", handleOpenAddCardPopupButtonClick);
-editProfileForm.addEventListener("submit", handleOpenProfileFormSubmit);
-addCardForm.addEventListener("submit", handleOpenCardFormSubmit);
+//editProfileForm.addEventListener("submit", handleOpenProfileFormSubmit);
+//addCardForm.addEventListener("submit", handleOpenCardFormSubmit);

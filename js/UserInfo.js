@@ -1,7 +1,18 @@
-class UserInfo {
-  constructor({ userName, userJob }) {}
+export class UserInfo {
+  constructor({ username, userJob }) {
+    this._username;
+    this._userJob;
+  }
 
-  getUserInfo() {}
+  getUserInfo() {
+    return {
+      name: this._username,
+      job: this._userJob,
+    };
+  }
 
-  setUserInfo() {}
+  setUserInfo(name, job) {
+    this._username = name;
+    this._userJob = job;
+  }
 }
