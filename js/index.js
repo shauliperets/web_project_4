@@ -2,8 +2,6 @@ import { cardsData } from "./cards-data.js";
 
 import { Card } from "./Card.js";
 
-//import { openPopup, closePopup, editProfilePopup, addCardPopup, imagePopup } from "./utils.js";
-
 import { FormValidator } from "./FormValidator.js";
 
 import { settings } from "./settings.js";
@@ -44,42 +42,26 @@ const imagePopupObj = new PopupWithImage("popup_float-image");
 
 const userInfo = new UserInfo(title.textContent, subtitle.textContent);
 
-/*
-initializeCards(cardsData);
-
-function initializeCards(cardsData) {
-  cardsData.forEach((cardData, index) => {
-    createCard(index, cardData.name, cardData.link, cardData.selector);
-  });
-}*/
-
 function handleEditProfileButtonClick() {
-  //openPopup(editProfilePopup);
   profilePopup.open();
-
-  //profilePopup.
 
   popupName.value = title.textContent;
   popupAboutMe.value = subtitle.textContent;
 }
 
 function handleCloseEditProfilePopupButtonClick() {
-  //closePopup(editProfilePopup);
   profilePopup.close();
 }
 
 function handleOpenAddCardPopupButtonClick() {
-  //openPopup(addCardPopup);
   addPopup.open();
 }
 
 function handleCloseAddCardPopupButtonClick() {
-  //closePopup(addCardPopup);
   addPopup.close();
 }
 
 function handleCloseFloatImageButtonClick() {
-  //closePopup(imagePopup);
   imagePopupObj.close();
 }
 
@@ -104,24 +86,12 @@ function handleOpenCardFormSubmit(event) {
   handleCloseAddCardPopupButtonClick();
 }
 
-//-->
 const handleCardClick = (event) => {
-  console.log(event.target.src);
-
   imagePopupObj.setImageSource(event.target.src);
 
+  imagePopupObj.setImageAlt(event.target.alt);
+
   imagePopupObj.open();
-
-  /*
-  this._imagePopupPhoto.src = this._element.querySelector(".card__image").src;
-
-  this._imagePopupPhoto.alt = `Photo of ${this._image}`;
-
-  this._imagePopupDescription.textContent = this._text;
-
-  //openPopup(this._imagePopup);
-
-  this._imagePopup.open();*/
 };
 
 function createCard(cardId, placeTitle, placeLink, cardSelector) {
@@ -158,6 +128,7 @@ enableValidation();
 
 profilePopup.setEventListeners();
 addPopup.setEventListeners();
+imagePopupObj.setEventListeners();
 
 //closeEditProfileButton.addEventListener("click", handleCloseEditProfilePopupButtonClick);
 //closeAddCardButton.addEventListener("click", handleCloseAddCardPopupButtonClick);

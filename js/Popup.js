@@ -59,6 +59,11 @@ class PopupWithImage extends Popup {
     super.open();
   }
 
+  _close = () => {
+    console.log("close image child");
+    super.close();
+  };
+
   getPhoto() {
     return this._imagePopupPhoto;
   }
@@ -70,52 +75,40 @@ class PopupWithImage extends Popup {
   setImageSource(source) {
     this._imagePopupPhoto.src = source;
   }
+
+  setImageAlt(text) {
+    console.log("decription => ", text);
+    this._imagePopupPhoto.alt = text;
+  }
+
+  setEventListeners() {
+    this._selector.addEventListener("click", this._close);
+  }
 }
 
 class PopupWithForm extends Popup {
   constructor(selector, submit) {
     super(selector);
     this._submit = submit;
-
-    //console.log("values =>", this._getInputValues());
-    //console.log("selector =>", this._selector);
-    //console.log("closeButton =>", this._closeButton);
   }
 
-  close() {
+  _close = () => {
     super.close();
     this._form.reset();
-  }
+  };
 
   _getInputValues() {
     this._inputList = this._selector.querySelectorAll(".popup__input");
 
-    //console.log("list =>", this._inputList);
-
-    //console.log("this._inputList =>", this._inputList);
-    //console.log("this._selector =>", this._selector);
-
     this._formValues = {};
     this._inputList.forEach((input) => {
       this._formValues[input.id] = input.value;
-      //console.log(`name: ${input.name}, value: ${input.value}`);
     });
-
-    //console.log("values 2 =>", this._formValues);
 
     return this._formValues;
   }
 
-  _close() {
-    console.log("local close");
-    super.close();
-  }
-
   setEventListeners() {
-    //super.setEventListeners();
-
-    console.log("close =>", this._closeButton);
-
     this._form.addEventListener("submit", this._handleSubmit);
     this._selector.addEventListener("click", this._close);
   }
