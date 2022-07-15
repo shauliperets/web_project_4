@@ -2,32 +2,26 @@ class Popup {
   constructor(selector) {
     this._selector = document.querySelector(`.${selector}`);
 
-    console.log("selector =>", this._selector);
-
     this._closeButton = this._selector.querySelector(".popup__close-button");
-    this._form = document.querySelector(".popup__form");
+    this._form = this._selector.querySelector(".popup__form");
   }
 
   open() {
     this._selector.classList.add("popup_open");
 
-    document.addEventListener("keyup", this._handleEscClose);
-    document.addEventListener("click", this._handleOverlay);
-
-    console.log("open - selector =>", this._selector);
+    //document.addEventListener("keyup", this._handleEscClose);
+    //document.addEventListener("click", this._handleOverlay);
   }
 
   close() {
-    console.log("close - selector =>", this._selector);
-
     this._selector.classList.remove("popup_open");
 
-    document.removeEventListener("keyup", this._handleEscClose);
-    document.removeEventListener("click", this._handleOverlay);
+    //document.removeEventListener("keyup", this._handleEscClose);
+    //document.removeEventListener("click", this._handleOverlay);
   }
 
   setEventListeners() {
-    this._closeButton.addEventListener("click", this.close);
+    //this._closeButton.addEventListener("click", this.close);
   }
 
   _handleOverlay = (event) => {
@@ -41,7 +35,6 @@ class Popup {
 
     if (event.key == "Escape" || event.key == "q") {
       this.close();
-      console.log("_handleEscClose clicked");
     }
   };
 }
@@ -77,12 +70,12 @@ class PopupWithImage extends Popup {
   }
 
   setImageAlt(text) {
-    console.log("decription => ", text);
+    //console.log("decription => ", text);
     this._imagePopupPhoto.alt = text;
   }
 
   setEventListeners() {
-    this._selector.addEventListener("click", this._close);
+    //this._selector.addEventListener("click", this._close);
   }
 }
 
@@ -109,14 +102,22 @@ class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
-    this._form.addEventListener("submit", this._handleSubmit);
-    this._selector.addEventListener("click", this._close);
+    this._form.addEventListener("submit", this._submit);
+    //this._form.addEventListener("submit", this.test);
+    //this._selector.addEventListener("click", this._close);
   }
 
+  /*
+  test = (event) => {
+    event.preventDefault();
+    console.log("test");
+  };*/
+
+  /*
   _handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log("target =>", event.target);
+    //console.log("target =>", event.target);
     const cardId = new Date().getTime();
 
     //in index
@@ -126,7 +127,7 @@ class PopupWithForm extends Popup {
 
     //handleCloseAddCardPopupButtonClick();
     super.close();
-  };
+  };*/
 }
 
 export { Popup, PopupWithForm, PopupWithImage };

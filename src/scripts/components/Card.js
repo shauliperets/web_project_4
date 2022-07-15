@@ -62,7 +62,6 @@ export class Card {
   }
 
   _setImageClick() {
-    console.log("from card.js");
     this._element.querySelector(".card__image").addEventListener("click", this._handleCardClick);
 
     /*

@@ -1,16 +1,16 @@
-import { cardsData } from "./cards-data.js";
+import { cardsData } from "./components/cards-data.js";
 
-import { Card } from "./Card.js";
+import { Card } from "./components/Card.js";
 
-import { FormValidator } from "./FormValidator.js";
+import { FormValidator } from "./components/FormValidator.js";
 
-import { settings } from "./settings.js";
+import { settings } from "./utils/settings.js";
 
-import { Section } from "./Section.js";
+import { Section } from "./components/Section.js";
 
-import { Popup, PopupWithForm, PopupWithImage } from "./Popup.js";
+import { Popup, PopupWithForm, PopupWithImage } from "./components/Popup.js";
 
-import { UserInfo } from "./UserInfo.js";
+import { UserInfo } from "./components/UserInfo.js";
 
 const editProfileButton = document.querySelector(".profile__edit-button");
 
@@ -20,7 +20,7 @@ const title = document.querySelector(".profile__title");
 
 const subtitle = document.querySelector(".profile__subtitle");
 
-const editProfileForm = document.querySelector(".popup__form_type_edit-profile");
+//const editProfileForm = document.querySelector(".popup__form_type_edit-profile");
 
 const addCardForm = document.querySelector(".popup__form_type_add-card");
 
@@ -33,14 +33,6 @@ const placeTitle = document.querySelector("#popup-title");
 const placeLink = document.querySelector("#popup-link");
 
 const cards = document.querySelector(".elements");
-
-const profilePopup = new PopupWithForm("popup_type_edit-profile", handleOpenProfileFormSubmit);
-
-const addPopup = new PopupWithForm("popup_type_add-card", handleOpenCardFormSubmit);
-
-const imagePopupObj = new PopupWithImage("popup_float-image");
-
-const userInfo = new UserInfo(title.textContent, subtitle.textContent);
 
 function handleEditProfileButtonClick() {
   profilePopup.open();
@@ -74,8 +66,10 @@ function handleOpenProfileFormSubmit(event) {
   addPopup.close();
 }
 
-function handleOpenCardFormSubmit(event) {
+const handleOpenCardFormSubmit = (event) => {
   event.preventDefault();
+
+  console.log("add submit");
 
   const cardId = new Date().getTime();
 
@@ -84,7 +78,7 @@ function handleOpenCardFormSubmit(event) {
   addCardForm.reset();
 
   handleCloseAddCardPopupButtonClick();
-}
+};
 
 const handleCardClick = (event) => {
   imagePopupObj.setImageSource(event.target.src);
@@ -125,6 +119,14 @@ const section = new Section(
 section.renderer();
 
 enableValidation();
+
+const profilePopup = new PopupWithForm("popup_type_edit-profile");
+
+const addPopup = new PopupWithForm("popup_type_add-card", handleOpenCardFormSubmit);
+
+const imagePopupObj = new PopupWithImage("popup_float-image");
+
+const userInfo = new UserInfo(title.textContent, subtitle.textContent);
 
 profilePopup.setEventListeners();
 addPopup.setEventListeners();
