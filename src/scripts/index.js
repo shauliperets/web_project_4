@@ -1,4 +1,4 @@
-import { cardsData } from "./components/cards-data.js";
+import { cardsData } from "./utils/cards-data.js";
 
 import { Card } from "./components/Card.js";
 
@@ -11,6 +11,8 @@ import { Section } from "./components/Section.js";
 import { Popup, PopupWithForm, PopupWithImage } from "./components/Popup.js";
 
 import { UserInfo } from "./components/UserInfo.js";
+
+import "../styles/pages/index.css";
 
 const editProfileButton = document.querySelector(".profile__edit-button");
 

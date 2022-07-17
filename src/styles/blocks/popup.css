@@ -137,7 +137,7 @@
 .popup__close-button {
   position: absolute;
   z-index: 1;
-  background-image: url(../images/close-icon.svg);
+  background-image: url(../../images/close-icon.svg);
   background-color: transparent;
   background-size: cover;
   width: 28px;
@@ -189,7 +189,7 @@
 .popup__close-button_type_float-image {
   position: static;
   z-index: 1;
-  background-image: url(../images/close-icon.svg);
+  background-image: url(../../images/close-icon.svg);
   background-color: transparent;
   background-size: cover;
   width: 28px;

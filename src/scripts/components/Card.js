@@ -2,17 +2,24 @@
 
 import { PopupWithImage } from "./Popup.js";
 
+import { heartIcon, blackHeartIcon } from "../utils/constanst.js";
+
 export class Card {
   constructor(cardId, text, image, selector, handleCardClick) {
     this._cardId = cardId;
     this._text = text;
     this._image = image;
-    this._selector = selector;
-
+    this._selector = document.querySelector(selector);
+    //console.log("selector => ", this._selector.content);
+    this._likeIcon = this._selector.content.querySelector(".card__icon");
+    this._likeIcon.src = heartIcon;
+    //console.log("likeIcon =>", this._likeIcon);
+    this._isLiked = false;
+    //console.log("this =>", this);
     //this._imagePopup = new PopupWithImage("popup_float-image");
     //this._imagePopup = popupWithImage;
     //this._imagePopup = document.querySelector(".popup_float-image");
-    //this._imagePopupPhoto = popupWithImage.getPhoto();
+    //t\is._imagePopupPhoto = popupWithImage.getPhoto();
     //this._imagePopupDescription = popupWithImage.getDescription();
     this._handleCardClick = handleCardClick;
   }
@@ -34,7 +41,8 @@ export class Card {
   }
 
   _getTemplate() {
-    const cardTemplate = document.querySelector(this._selector).content;
+    //const cardTemplate = document.querySelector(this._selector).content;
+    const cardTemplate = this._selector.content;
 
     const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
 
@@ -51,7 +59,7 @@ export class Card {
 
   _setLikeIconClick() {
     this._element.querySelector(".card__like-button").addEventListener("click", () => {
-      this._handleLikeIconClick(this._cardId);
+      this._handleLikeIconClick();
     });
   }
 
@@ -83,13 +91,22 @@ export class Card {
     this._element.remove();
   }
 
-  _handleLikeIconClick(id) {
-    const likeIcon = this._element.querySelector(".card__icon");
+  //------> need to fix the if - comapre with hash
+  _handleLikeIconClick() {
+    //const likeIcon = this._element.querySelector(".card__icon");
 
-    if (likeIcon.src.includes("/heart.svg")) {
-      likeIcon.src = "./images/heart-black.svg";
+    console.log("before _handleLikeIconClick clicked...", this._cardId, this._likeIcon.src, this._isLiked);
+    //if (likeIcon.src.includes("/heart.svg")) {
+    if (this._isLiked) {
+      //likeIcon.src = "<%=require('./images/heart-black.svg')%>";
+      this._likeIcon.src = heartIcon;
+      this._isLiked = false;
     } else {
-      likeIcon.src = "./images/heart.svg";
+      //likeIcon.src = "<%=require('./images/heart.svg')%>";
+      this._likeIcon.src = blackHeartIcon;
+      this._isLiked = true;
     }
+
+    console.log("after _handleLikeIconClick clicked...", this._cardId, this._likeIcon.src, this._isLiked);
   }
 }

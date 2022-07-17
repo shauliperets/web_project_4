@@ -1,4 +1,7 @@
 const path = require("path"); // connect path to webpack config
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   devtool: "inline-source-map",
@@ -12,6 +15,7 @@ module.exports = {
     publicPath: "",
   },
   target: ["web", "es5"], // ensure the Webpack glue code is ES5 compatible too
+  stats: { children: true }, // Show child compilation errors from plugins
   mode: "development",
   devServer: {
     static: path.resolve(__dirname, "./dist"), // specifies a folder from where to serve the application and its contents
@@ -31,6 +35,26 @@ module.exports = {
         // exclude the node_modules folder, we don't need to process files in it
         exclude: "/node_modules/",
       },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+          },
+        ],
+      },
+      {
+        test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
+        type: "asset/resource",
+      },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/index.html", // path to our index.html file
+    }),
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin(),
+  ],
 };

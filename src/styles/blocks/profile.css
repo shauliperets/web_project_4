@@ -76,7 +76,7 @@
   background-color: transparent;
   border: 0;
   cursor: pointer;
-  background-image: url("../images/add-button.svg");
+  background-image: url("../../images/add-button.svg");
   background-repeat: no-repeat;
 }
 
@@ -99,7 +99,7 @@
     grid-row-end: 5;
     margin-left: 0;
     width: 290px;
-    background-image: url("../images/add-button320.svg");
+    background-image: url("../../images/add-button320.svg");
   }
 }
 
