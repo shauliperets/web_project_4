@@ -68,6 +68,15 @@ function handleOpenProfileFormSubmit(event) {
   addPopup.close();
 }
 
+const handleEditProfileFormSubmit = (event) => {
+  event.preventDefault();
+
+  document.querySelector(".profile__title").textContent = event.target.querySelector("#popup-name").value;
+  document.querySelector(".profile__subtitle").textContent = event.target.querySelector("#popup-about-me").value;
+
+  profilePopup.close();
+};
+
 const handleOpenCardFormSubmit = (event) => {
   event.preventDefault();
 
@@ -122,7 +131,7 @@ section.renderer();
 
 enableValidation();
 
-const profilePopup = new PopupWithForm("popup_type_edit-profile");
+const profilePopup = new PopupWithForm("popup_type_edit-profile", handleEditProfileFormSubmit);
 
 const addPopup = new PopupWithForm("popup_type_add-card", handleOpenCardFormSubmit);
 

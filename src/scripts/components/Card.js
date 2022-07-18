@@ -27,6 +27,9 @@ export class Card {
   generateCard() {
     this._element = this._getTemplate();
 
+    //console.log("selector =>", this._selector);
+    //console.log("elemetnt =>", this._element);
+
     const cardTitle = this._element.querySelector(".card__title");
     const cardImage = this._element.querySelector(".card__image");
 
@@ -58,15 +61,11 @@ export class Card {
   }
 
   _setLikeIconClick() {
-    this._element.querySelector(".card__like-button").addEventListener("click", () => {
-      this._handleLikeIconClick();
-    });
+    this._element.querySelector(".card__like-button").addEventListener("click", this._handleLikeIconClick);
   }
 
   _setDeleteClick() {
-    this._element.querySelector(".card__delete-button").addEventListener("click", () => {
-      this._handleDeleteClick();
-    });
+    this._element.querySelector(".card__delete-button").addEventListener("click", this._handleDeleteClick);
   }
 
   _setImageClick() {
@@ -87,16 +86,12 @@ export class Card {
     */
   }
 
-  _handleDeleteClick() {
+  _handleDeleteClick = () => {
     this._element.remove();
-  }
+  };
 
-  //------> need to fix the if - comapre with hash
-  _handleLikeIconClick() {
-    //const likeIcon = this._element.querySelector(".card__icon");
-
+  _handleLikeIconClick = () => {
     console.log("before _handleLikeIconClick clicked...", this._cardId, this._likeIcon.src, this._isLiked);
-    //if (likeIcon.src.includes("/heart.svg")) {
     if (this._isLiked) {
       //likeIcon.src = "<%=require('./images/heart-black.svg')%>";
       this._likeIcon.src = heartIcon;
@@ -108,5 +103,5 @@ export class Card {
     }
 
     console.log("after _handleLikeIconClick clicked...", this._cardId, this._likeIcon.src, this._isLiked);
-  }
+  };
 }

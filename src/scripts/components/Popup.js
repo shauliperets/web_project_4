@@ -1,7 +1,6 @@
 class Popup {
   constructor(selector) {
     this._selector = document.querySelector(`.${selector}`);
-
     this._closeButton = this._selector.querySelector(".popup__close-button");
     this._form = this._selector.querySelector(".popup__form");
   }
@@ -9,19 +8,21 @@ class Popup {
   open() {
     this._selector.classList.add("popup_open");
 
-    //document.addEventListener("keyup", this._handleEscClose);
-    //document.addEventListener("click", this._handleOverlay);
+    document.addEventListener("keyup", this._handleEscClose);
+    document.addEventListener("click", this._handleOverlay);
   }
 
-  close() {
+  close = () => {
     this._selector.classList.remove("popup_open");
 
-    //document.removeEventListener("keyup", this._handleEscClose);
-    //document.removeEventListener("click", this._handleOverlay);
-  }
+    document.removeEventListener("keyup", this._handleEscClose);
+    document.removeEventListener("click", this._handleOverlay);
+  };
 
   setEventListeners() {
-    //this._closeButton.addEventListener("click", this.close);
+    this._closeButton.addEventListener("click", this.close);
+
+    //console.log("parent close click");
   }
 
   _handleOverlay = (event) => {
@@ -79,10 +80,17 @@ class PopupWithImage extends Popup {
   }
 }
 
+/**
+ *
+ * continue not close button
+ */
+
 class PopupWithForm extends Popup {
   constructor(selector, submit) {
     super(selector);
     this._submit = submit;
+
+    console.log("form =>", this._form);
   }
 
   _close = () => {
@@ -102,6 +110,7 @@ class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
+    super.setEventListeners();
     this._form.addEventListener("submit", this._submit);
     //this._form.addEventListener("submit", this.test);
     //this._selector.addEventListener("click", this._close);
