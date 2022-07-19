@@ -1,18 +1,18 @@
-import { cardsData } from "./utils/cards-data.js";
+import { cardsData } from "../scripts/utils/cards-data.js";
 
-import { Card } from "./components/Card.js";
+import { Card } from "../scripts/components/Card.js";
 
-import { FormValidator } from "./components/FormValidator.js";
+import { FormValidator } from "../scripts/components/FormValidator.js";
 
-import { settings } from "./utils/settings.js";
+import { settings } from "../scripts/utils/settings.js";
 
-import { Section } from "./components/Section.js";
+import { Section } from "../scripts/components/Section.js";
 
-import { PopupWithForm, PopupWithImage } from "./components/Popup.js";
+import { PopupWithForm, PopupWithImage } from "../scripts/components/Popup.js";
 
-import { UserInfo } from "./components/UserInfo.js";
+import { UserInfo } from "../scripts/components/UserInfo.js";
 
-import "../styles/pages/index.css";
+import "./index.css";
 
 const editProfileButton = document.querySelector(".profile__edit-button");
 
@@ -34,11 +34,15 @@ const placeLink = document.querySelector("#popup-link");
 
 const cards = document.querySelector(".elements");
 
+const userInfo = new UserInfo({ username: title.textContent, userJob: subtitle.textContent });
+
 function handleEditProfileButtonClick() {
   profilePopup.open();
 
-  popupName.value = title.textContent;
-  popupAboutMe.value = subtitle.textContent;
+  const user = userInfo.getUserInfo();
+
+  popupName.value = user.name;
+  popupAboutMe.value = user.job;
 }
 
 function handleOpenAddCardPopupButtonClick() {
@@ -52,8 +56,10 @@ function handleCloseAddCardPopupButtonClick() {
 const handleEditProfileFormSubmit = (event) => {
   event.preventDefault();
 
-  document.querySelector(".profile__title").textContent = event.target.querySelector("#popup-name").value;
-  document.querySelector(".profile__subtitle").textContent = event.target.querySelector("#popup-about-me").value;
+  const name = event.target.querySelector("#popup-name").value;
+  const job = event.target.querySelector("#popup-about-me").value;
+
+  userInfo.setUserInfo(name, job);
 
   profilePopup.close();
 };
@@ -80,7 +86,7 @@ const handleCardClick = (event) => {
 
 function createCard(cardId, placeTitle, placeLink, cardSelector) {
   const card = new Card(cardId, placeTitle, placeLink, cardSelector, handleCardClick);
-  const cardElement = card.generateCard();
+  const cardElement = card.setCard();
   renderCard(cardElement);
 }
 
@@ -115,8 +121,6 @@ const profilePopup = new PopupWithForm("popup_type_edit-profile", handleEditProf
 const addPopup = new PopupWithForm("popup_type_add-card", handleOpenCardFormSubmit);
 
 const imagePopupObj = new PopupWithImage("popup_float-image");
-
-const userInfo = new UserInfo(title.textContent, subtitle.textContent);
 
 profilePopup.setEventListeners();
 addPopup.setEventListeners();

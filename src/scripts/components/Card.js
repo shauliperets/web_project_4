@@ -1,7 +1,3 @@
-//import { openPopup } from "./utils.js";
-
-import { PopupWithImage } from "./Popup.js";
-
 import { heartIcon, blackHeartIcon } from "../utils/constanst.js";
 
 export class Card {
@@ -9,16 +5,11 @@ export class Card {
     this._cardId = cardId;
     this._text = text;
     this._image = image;
+
+    console.log("selector =>", selector);
     this._selector = document.querySelector(selector);
-    this._likeIcon = this._selector.content.querySelector(".card__icon");
-    this._likeIcon.src = heartIcon;
-    this._isLiked = false;
-    this._handleCardClick = handleCardClick;
-  }
 
-  generateCard() {
     this._element = this._getTemplate();
-
     const cardTitle = this._element.querySelector(".card__title");
     const cardImage = this._element.querySelector(".card__image");
 
@@ -27,13 +18,20 @@ export class Card {
     cardImage.src = this._image;
     cardImage.alt = `Photo of ${this._text}`;
 
+    this._likeIcon = this._element.querySelector(".card__icon");
+
+    this._likeIcon.src = heartIcon;
+    this._isLiked = false;
+    this._handleCardClick = handleCardClick;
+  }
+
+  setCard() {
     this._setEventListeners();
 
     return this._element;
   }
 
   _getTemplate() {
-    //const cardTemplate = document.querySelector(this._selector).content;
     const cardTemplate = this._selector.content;
 
     const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
@@ -59,20 +57,6 @@ export class Card {
 
   _setImageClick() {
     this._element.querySelector(".card__image").addEventListener("click", this._handleCardClick);
-
-    /*
-    this._element.querySelector(".card__image").addEventListener("click", () => {
-      this._imagePopupPhoto.src = this._element.querySelector(".card__image").src;
-
-      this._imagePopupPhoto.alt = `Photo of ${this._image}`;
-
-      this._imagePopupDescription.textContent = this._text;
-
-      //openPopup(this._imagePopup);
-
-      this._imagePopup.open();
-    });
-    */
   }
 
   _handleDeleteClick = () => {
@@ -80,18 +64,12 @@ export class Card {
   };
 
   _handleLikeIconClick = () => {
-    console.log("before _handleLikeIconClick clicked...", this._likeIcon, this._likeIcon.src, this._isLiked);
-
     if (this._isLiked) {
-      //this._likeIcon.src = "./images/heart-black.svg";
       this._likeIcon.src = heartIcon;
       this._isLiked = false;
     } else {
-      //this._likeIcon.src = "./images/heart.svg";
       this._likeIcon.src = blackHeartIcon;
       this._isLiked = true;
     }
-
-    console.log("after _handleLikeIconClick clicked...", this._likeIcon, this._likeIcon.src, this._isLiked);
   };
 }
