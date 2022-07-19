@@ -8,7 +8,9 @@ import { settings } from "../scripts/utils/settings.js";
 
 import { Section } from "../scripts/components/Section.js";
 
-import { PopupWithForm, PopupWithImage } from "../scripts/components/Popup.js";
+import { PopupWithForm } from "../scripts/components/PopupWithForm.js";
+
+import { PopupWithImage } from "../scripts/components/PopupWithImage.js";
 
 import { UserInfo } from "../scripts/components/UserInfo.js";
 
@@ -77,9 +79,7 @@ const handleOpenCardFormSubmit = (event) => {
 };
 
 const handleCardClick = (event) => {
-  imagePopupObj.setImageSource(event.target.src);
-
-  imagePopupObj.setImageAlt(event.target.alt);
+  imagePopupObj.setImage(event.target.src, event.target.alt);
 
   imagePopupObj.open();
 };

@@ -6,7 +6,6 @@ export class Card {
     this._text = text;
     this._image = image;
 
-    console.log("selector =>", selector);
     this._selector = document.querySelector(selector);
 
     this._element = this._getTemplate();
