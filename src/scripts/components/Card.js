@@ -10,25 +10,14 @@ export class Card {
     this._text = text;
     this._image = image;
     this._selector = document.querySelector(selector);
-    //console.log("selector => ", this._selector.content);
     this._likeIcon = this._selector.content.querySelector(".card__icon");
     this._likeIcon.src = heartIcon;
-    //console.log("likeIcon =>", this._likeIcon);
     this._isLiked = false;
-    //console.log("this =>", this);
-    //this._imagePopup = new PopupWithImage("popup_float-image");
-    //this._imagePopup = popupWithImage;
-    //this._imagePopup = document.querySelector(".popup_float-image");
-    //t\is._imagePopupPhoto = popupWithImage.getPhoto();
-    //this._imagePopupDescription = popupWithImage.getDescription();
     this._handleCardClick = handleCardClick;
   }
 
   generateCard() {
     this._element = this._getTemplate();
-
-    //console.log("selector =>", this._selector);
-    //console.log("elemetnt =>", this._element);
 
     const cardTitle = this._element.querySelector(".card__title");
     const cardImage = this._element.querySelector(".card__image");
@@ -91,17 +80,18 @@ export class Card {
   };
 
   _handleLikeIconClick = () => {
-    console.log("before _handleLikeIconClick clicked...", this._cardId, this._likeIcon.src, this._isLiked);
+    console.log("before _handleLikeIconClick clicked...", this._likeIcon, this._likeIcon.src, this._isLiked);
+
     if (this._isLiked) {
-      //likeIcon.src = "<%=require('./images/heart-black.svg')%>";
+      //this._likeIcon.src = "./images/heart-black.svg";
       this._likeIcon.src = heartIcon;
       this._isLiked = false;
     } else {
-      //likeIcon.src = "<%=require('./images/heart.svg')%>";
+      //this._likeIcon.src = "./images/heart.svg";
       this._likeIcon.src = blackHeartIcon;
       this._isLiked = true;
     }
 
-    console.log("after _handleLikeIconClick clicked...", this._cardId, this._likeIcon.src, this._isLiked);
+    console.log("after _handleLikeIconClick clicked...", this._likeIcon, this._likeIcon.src, this._isLiked);
   };
 }

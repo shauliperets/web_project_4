@@ -8,7 +8,7 @@ import { settings } from "./utils/settings.js";
 
 import { Section } from "./components/Section.js";
 
-import { Popup, PopupWithForm, PopupWithImage } from "./components/Popup.js";
+import { PopupWithForm, PopupWithImage } from "./components/Popup.js";
 
 import { UserInfo } from "./components/UserInfo.js";
 
@@ -21,8 +21,6 @@ const addCardButton = document.querySelector(".profile__add-button");
 const title = document.querySelector(".profile__title");
 
 const subtitle = document.querySelector(".profile__subtitle");
-
-//const editProfileForm = document.querySelector(".popup__form_type_edit-profile");
 
 const addCardForm = document.querySelector(".popup__form_type_add-card");
 
@@ -43,28 +41,11 @@ function handleEditProfileButtonClick() {
   popupAboutMe.value = subtitle.textContent;
 }
 
-function handleCloseEditProfilePopupButtonClick() {
-  profilePopup.close();
-}
-
 function handleOpenAddCardPopupButtonClick() {
   addPopup.open();
 }
 
 function handleCloseAddCardPopupButtonClick() {
-  addPopup.close();
-}
-
-function handleCloseFloatImageButtonClick() {
-  imagePopupObj.close();
-}
-
-function handleOpenProfileFormSubmit(event) {
-  event.preventDefault();
-
-  title.textContent = popupName.value;
-  subtitle.textContent = popupAboutMe.value;
-
   addPopup.close();
 }
 
@@ -79,8 +60,6 @@ const handleEditProfileFormSubmit = (event) => {
 
 const handleOpenCardFormSubmit = (event) => {
   event.preventDefault();
-
-  console.log("add submit");
 
   const cardId = new Date().getTime();
 
@@ -143,10 +122,5 @@ profilePopup.setEventListeners();
 addPopup.setEventListeners();
 imagePopupObj.setEventListeners();
 
-//closeEditProfileButton.addEventListener("click", handleCloseEditProfilePopupButtonClick);
-//closeAddCardButton.addEventListener("click", handleCloseAddCardPopupButtonClick);
-//closeFloatImageButton.addEventListener("click", handleCloseFloatImageButtonClick);
 editProfileButton.addEventListener("click", handleEditProfileButtonClick);
 addCardButton.addEventListener("click", handleOpenAddCardPopupButtonClick);
-//editProfileForm.addEventListener("submit", handleOpenProfileFormSubmit);
-//addCardForm.addEventListener("submit", handleOpenCardFormSubmit);

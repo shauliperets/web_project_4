@@ -21,8 +21,6 @@ class Popup {
 
   setEventListeners() {
     this._closeButton.addEventListener("click", this.close);
-
-    //console.log("parent close click");
   }
 
   _handleOverlay = (event) => {
@@ -48,16 +46,6 @@ class PopupWithImage extends Popup {
     this._description = this._selector.querySelector(".popup__image-description");
   }
 
-  open() {
-    //change src too
-    super.open();
-  }
-
-  _close = () => {
-    console.log("close image child");
-    super.close();
-  };
-
   getPhoto() {
     return this._imagePopupPhoto;
   }
@@ -71,26 +59,14 @@ class PopupWithImage extends Popup {
   }
 
   setImageAlt(text) {
-    //console.log("decription => ", text);
     this._imagePopupPhoto.alt = text;
   }
-
-  setEventListeners() {
-    //this._selector.addEventListener("click", this._close);
-  }
 }
-
-/**
- *
- * continue not close button
- */
 
 class PopupWithForm extends Popup {
   constructor(selector, submit) {
     super(selector);
     this._submit = submit;
-
-    console.log("form =>", this._form);
   }
 
   _close = () => {
@@ -112,31 +88,7 @@ class PopupWithForm extends Popup {
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener("submit", this._submit);
-    //this._form.addEventListener("submit", this.test);
-    //this._selector.addEventListener("click", this._close);
   }
-
-  /*
-  test = (event) => {
-    event.preventDefault();
-    console.log("test");
-  };*/
-
-  /*
-  _handleSubmit = (event) => {
-    event.preventDefault();
-
-    //console.log("target =>", event.target);
-    const cardId = new Date().getTime();
-
-    //in index
-    createCard(cardId, placeTitle.value, placeLink.value, "#card-default");
-
-    this._form.reset();
-
-    //handleCloseAddCardPopupButtonClick();
-    super.close();
-  };*/
 }
 
 export { Popup, PopupWithForm, PopupWithImage };
